@@ -4,200 +4,156 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PriceCompare - Encuentra los mejores precios en electrónicos</title>
+    <meta name="description" content="Compara precios de productos electrónicos en las mejores tiendas online.">
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Header -->
-    <header class="header">
-        <nav class="nav-container">
-            <a href="#" class="logo">Comparacion de Precios</a>
-            
-            <ul class="nav-menu">
+    <header class="header" id="inicio">
+        <nav class="nav-container" aria-label="Navegación principal">
+            <a href="#" class="logo" aria-label="Inicio">Comparacion de Precios</a>
+            <button class="mobile-menu-toggle" aria-label="Abrir menú de navegación" aria-expanded="false" aria-controls="nav-menu">☰</button>
+            <ul class="nav-menu" id="nav-menu">
                 <li><a href="#inicio">Inicio</a></li>
                 <li><a href="#categorias">Categorías</a></li>
                 <li><a href="#ofertas">Ofertas</a></li>
                 <li><a href="#contacto">Contacto</a></li>
             </ul>
-
-            <div class="search-container">
-                <input type="text" class="search-input" placeholder="Buscar productos...">
-                <button class="search-btn">🔍</button>
-            </div>
-
-            <button class="mobile-menu-toggle">☰</button>
+            <form class="search-container" role="search" aria-label="Buscar productos" onsubmit="return false;">
+                <input type="search" class="search-input" placeholder="Buscar productos..." aria-label="Buscar productos">
+                <button type="button" class="search-btn" aria-label="Buscar">🔍</button>
+            </form>
         </nav>
     </header>
-
     <main>
-        <!-- Hero Section -->
-        <section class="hero">
+        <section class="hero" aria-labelledby="hero-title">
             <div class="container">
-                <h1>Encuentra los mejores precios en electrónicos</h1>
+                <h1 id="hero-title">Encuentra los mejores precios en electrónicos</h1>
                 <p>Compara precios de miles de productos en las mejores tiendas online</p>
             </div>
         </section>
-
         <div class="container">
-            <!-- Categories Section -->
-            <section class="section" id="categorias">
-                <h2 class="section-title">Categorías Populares</h2>
+            <section class="section" id="categorias" aria-labelledby="categorias-title">
+                <h2 class="section-title" id="categorias-title">Categorías Populares</h2>
                 <div class="categories-grid">
-                    <div class="category-card">
-                        <div class="category-icon">📱</div>
+                    <button class="category-card" type="button" aria-label="Explorar Celulares">
+                        <span class="category-icon" aria-hidden="true">📱</span>
                         <h3>Celulares</h3>
                         <p>Smartphones de todas las marcas</p>
-                    </div>
-                    <div class="category-card">
-                        <div class="category-icon">💻</div>
+                    </button>
+                    <button class="category-card" type="button" aria-label="Explorar Laptops">
+                        <span class="category-icon" aria-hidden="true">💻</span>
                         <h3>Laptops</h3>
                         <p>Computadoras portátiles</p>
-                    </div>
-                    <div class="category-card">
-                        <div class="category-icon">📺</div>
+                    </button>
+                    <button class="category-card" type="button" aria-label="Explorar Televisores">
+                        <span class="category-icon" aria-hidden="true">📺</span>
                         <h3>Televisores</h3>
                         <p>Smart TVs y más</p>
-                    </div>
-                    <div class="category-card">
-                        <div class="category-icon">🎧</div>
+                    </button>
+                    <button class="category-card" type="button" aria-label="Explorar Audio">
+                        <span class="category-icon" aria-hidden="true">🎧</span>
                         <h3>Audio</h3>
                         <p>Auriculares y altavoces</p>
-                    </div>
-                    <div class="category-card">
-                        <div class="category-icon">📷</div>
+                    </button>
+                    <button class="category-card" type="button" aria-label="Explorar Cámaras">
+                        <span class="category-icon" aria-hidden="true">📷</span>
                         <h3>Cámaras</h3>
                         <p>Fotografía profesional</p>
-                    </div>
-                    <div class="category-card">
-                        <div class="category-icon">⌚</div>
+                    </button>
+                    <button class="category-card" type="button" aria-label="Explorar Wearables">
+                        <span class="category-icon" aria-hidden="true">⌚</span>
                         <h3>Wearables</h3>
                         <p>Smartwatch y fitness</p>
-                    </div>
+                    </button>
                 </div>
             </section>
-
-            <!-- Products Section -->
-            <section class="section">
-                <h2 class="section-title">Productos Más Buscados</h2>
+            <section class="section" id="ofertas" aria-labelledby="ofertas-title">
+                <h2 class="section-title" id="ofertas-title">Productos Más Buscados</h2>
                 <div class="products-grid">
-                    <div class="product-card">
-                        <div class="product-image">📱</div>
+                    <article class="product-card">
+                        <div class="product-image" aria-hidden="true">📱</div>
                         <div class="product-info">
                             <h3 class="product-name">iPhone 15 Pro 128GB</h3>
                             <div class="price-comparison">
                                 <div class="best-price">Desde $999,999</div>
                                 <div class="store-prices">
-                                    <div class="store-price">
-                                        <span class="store-name">TechStore</span>
-                                        <span class="price">$999,999</span>
-                                    </div>
-                                    <div class="store-price">
-                                        <span class="store-name">ElectroMax</span>
-                                        <span class="price">$1,049,999</span>
-                                    </div>
-                                    <div class="store-price">
-                                        <span class="store-name">DigitalPlus</span>
-                                        <span class="price">$1,099,999</span>
-                                    </div>
+                                    <div class="store-price"><span class="store-name">TechStore</span><span class="price">$999,999</span></div>
+                                    <div class="store-price"><span class="store-name">ElectroMax</span><span class="price">$1,049,999</span></div>
+                                    <div class="store-price"><span class="store-name">DigitalPlus</span><span class="price">$1,099,999</span></div>
                                 </div>
                             </div>
-                            <button class="compare-btn">Comparar Precios</button>
+                            <button class="compare-btn" type="button" aria-label="Comparar precios de iPhone 15 Pro 128GB">Comparar Precios</button>
                         </div>
-                    </div>
-
-                    <div class="product-card">
-                        <div class="product-image">💻</div>
+                    </article>
+                    <article class="product-card">
+                        <div class="product-image" aria-hidden="true">💻</div>
                         <div class="product-info">
                             <h3 class="product-name">MacBook Air M2 256GB</h3>
                             <div class="price-comparison">
                                 <div class="best-price">Desde $1,199,999</div>
                                 <div class="store-prices">
-                                    <div class="store-price">
-                                        <span class="store-name">CompuWorld</span>
-                                        <span class="price">$1,199,999</span>
-                                    </div>
-                                    <div class="store-price">
-                                        <span class="store-name">TechZone</span>
-                                        <span class="price">$1,249,999</span>
-                                    </div>
-                                    <div class="store-price">
-                                        <span class="store-name">DigitalHub</span>
-                                        <span class="price">$1,299,999</span>
-                                    </div>
+                                    <div class="store-price"><span class="store-name">CompuWorld</span><span class="price">$1,199,999</span></div>
+                                    <div class="store-price"><span class="store-name">TechZone</span><span class="price">$1,249,999</span></div>
+                                    <div class="store-price"><span class="store-name">DigitalHub</span><span class="price">$1,299,999</span></div>
                                 </div>
                             </div>
-                            <button class="compare-btn">Comparar Precios</button>
+                            <button class="compare-btn" type="button" aria-label="Comparar precios de MacBook Air M2 256GB">Comparar Precios</button>
                         </div>
-                    </div>
-
-                    <div class="product-card">
-                        <div class="product-image">📺</div>
+                    </article>
+                    <article class="product-card">
+                        <div class="product-image" aria-hidden="true">📺</div>
                         <div class="product-info">
                             <h3 class="product-name">Samsung QLED 55" 4K</h3>
                             <div class="price-comparison">
                                 <div class="best-price">Desde $799,999</div>
                                 <div class="store-prices">
-                                    <div class="store-price">
-                                        <span class="store-name">ElectroCity</span>
-                                        <span class="price">$799,999</span>
-                                    </div>
-                                    <div class="store-price">
-                                        <span class="store-name">MegaStore</span>
-                                        <span class="price">$849,999</span>
-                                    </div>
-                                    <div class="store-price">
-                                        <span class="store-name">TechMart</span>
-                                        <span class="price">$899,999</span>
-                                    </div>
+                                    <div class="store-price"><span class="store-name">ElectroCity</span><span class="price">$799,999</span></div>
+                                    <div class="store-price"><span class="store-name">MegaStore</span><span class="price">$849,999</span></div>
+                                    <div class="store-price"><span class="store-name">TechMart</span><span class="price">$899,999</span></div>
                                 </div>
                             </div>
-                            <button class="compare-btn">Comparar Precios</button>
+                            <button class="compare-btn" type="button" aria-label="Comparar precios de Samsung QLED 55 4K">Comparar Precios</button>
                         </div>
-                    </div>
-
-                    <div class="product-card">
-                        <div class="product-image">🎧</div>
+                    </article>
+                    <article class="product-card">
+                        <div class="product-image" aria-hidden="true">🎧</div>
                         <div class="product-info">
                             <h3 class="product-name">AirPods Pro 2da Gen</h3>
                             <div class="price-comparison">
                                 <div class="best-price">Desde $249,999</div>
                                 <div class="store-prices">
-                                    <div class="store-price">
-                                        <span class="store-name">SoundStore</span>
-                                        <span class="price">$249,999</span>
-                                    </div>
-                                    <div class="store-price">
-                                        <span class="store-name">AudioPlus</span>
-                                        <span class="price">$269,999</span>
-                                    </div>
-                                    <div class="store-price">
-                                        <span class="store-name">TechAudio</span>
-                                        <span class="price">$289,999</span>
-                                    </div>
+                                    <div class="store-price"><span class="store-name">SoundStore</span><span class="price">$249,999</span></div>
+                                    <div class="store-price"><span class="store-name">AudioPlus</span><span class="price">$269,999</span></div>
+                                    <div class="store-price"><span class="store-name">TechAudio</span><span class="price">$289,999</span></div>
                                 </div>
                             </div>
-                            <button class="compare-btn">Comparar Precios</button>
+                            <button class="compare-btn" type="button" aria-label="Comparar precios de AirPods Pro 2da Gen">Comparar Precios</button>
                         </div>
-                    </div>
+                    </article>
                 </div>
+            </section>
+            <section class="section" id="contacto" aria-labelledby="contacto-title">
+                <h2 class="section-title" id="contacto-title">Contacto</h2>
+                <p>¿Tienes dudas o sugerencias? <a href="mailto:info@pricecompare.com">Contáctanos</a>.</p>
             </section>
         </div>
     </main>
-
-    <!-- Footer -->
     <footer class="footer">
         <div class="footer-content">
-            <div class="footer-section">
+            <section class="footer-section">
                 <h3>PriceCompare</h3>
                 <p>Tu plataforma confiable para comparar precios de productos electrónicos. Encuentra las mejores ofertas en un solo lugar.</p>
                 <div class="social-links">
-                    <a href="#" class="social-link">📘</a>
-                    <a href="#" class="social-link">🐦</a>
-                    <a href="#" class="social-link">📷</a>
-                    <a href="#" class="social-link">💼</a>
+                    <a href="#" class="social-link" aria-label="Facebook">📘</a>
+                    <a href="#" class="social-link" aria-label="Twitter">🐦</a>
+                    <a href="#" class="social-link" aria-label="Instagram">📷</a>
+                    <a href="#" class="social-link" aria-label="LinkedIn">💼</a>
                 </div>
-            </div>
-            
-            <div class="footer-section">
+            </section>
+            <section class="footer-section">
                 <h3>Categorías</h3>
                 <a href="#">Celulares</a>
                 <a href="#">Laptops</a>
@@ -205,32 +161,28 @@
                 <a href="#">Audio</a>
                 <a href="#">Cámaras</a>
                 <a href="#">Wearables</a>
-            </div>
-            
-            <div class="footer-section">
+            </section>
+            <section class="footer-section">
                 <h3>Empresa</h3>
                 <a href="#">Acerca de</a>
                 <a href="#">Cómo funciona</a>
                 <a href="#">Careers</a>
                 <a href="#">Blog</a>
                 <a href="#">Prensa</a>
-            </div>
-            
-            <div class="footer-section">
+            </section>
+            <section class="footer-section">
                 <h3>Soporte</h3>
                 <a href="#">Centro de Ayuda</a>
                 <a href="#">Contacto</a>
                 <a href="#">Términos de Uso</a>
                 <a href="#">Política de Privacidad</a>
                 <a href="#">Cookies</a>
-            </div>
+            </section>
         </div>
-        
         <div class="footer-bottom">
             <p>&copy; 2025 PriceCompare. Todos los derechos reservados.</p>
         </div>
     </footer>
-
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
 </body>
 </html>
