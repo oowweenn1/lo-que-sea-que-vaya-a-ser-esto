@@ -1,1 +1,0 @@
-pongan ideas aca loco
