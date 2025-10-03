@@ -1,19 +1,17 @@
-// ===== PRICECOMPARE - JAVASCRIPT INTERACTIVO =====
+// ===== PERFUMECOMPARE - JAVASCRIPT =====
 document.addEventListener('DOMContentLoaded', function() {
     
     // ===== VARIABLES GLOBALES =====
     const header = document.querySelector('.header');
     const searchBtn = document.querySelector('.search-btn');
     const searchInput = document.querySelector('.search-input');
-    const mobileToggle = document.querySelector('.mobile-menu-toggle');
-    const navMenu = document.querySelector('.nav-menu');
-    const categoryCards = document.querySelectorAll('.category-card');
-    const compareButtons = document.querySelectorAll('.compare-btn');
-    const perfumesBtn = document.querySelector('.perfumes-btn');
+    const categoryCards = document.querySelectorAll('.fragrance-category-card');
+    const perfumeCards = document.querySelectorAll('.perfume-card');
+    const perfumeBtns = document.querySelectorAll('.perfume-btn');
+    const newsletterForm = document.querySelector('.newsletter-form');
+    const newsletterInput = document.querySelector('.newsletter-input');
 
     // ===== HEADER SCROLL EFFECT =====
-    let lastScrollY = window.scrollY;
-
     window.addEventListener('scroll', () => {
         if (window.scrollY > 100) {
             header.classList.add('scrolled');
@@ -22,10 +20,9 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // ===== BÚSQUEDA CON ANIMACIONES =====
+    // ===== BÚSQUEDA =====
     function performSearch() {
         if (searchInput.value.trim()) {
-            // Animación del botón
             searchBtn.style.transform = 'scale(0.9)';
             setTimeout(() => {
                 searchBtn.style.transform = 'scale(1.1)';
@@ -39,7 +36,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Event listeners para la búsqueda
     if (searchBtn) {
         searchBtn.addEventListener('click', performSearch);
     }
@@ -51,7 +47,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
 
-        // Efecto de focus en el input
         searchInput.addEventListener('focus', function() {
             this.parentElement.style.borderColor = 'var(--primary-red)';
             this.parentElement.style.boxShadow = '0 0 20px rgba(229, 9, 20, 0.2)';
@@ -63,24 +58,27 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // ===== CATEGORY CARDS CON EFECTOS MEJORADOS =====
+    // ===== CATEGORÍAS =====
     categoryCards.forEach((card, index) => {
         card.addEventListener('click', function() {
             const categoryName = this.querySelector('h3').textContent;
             
-            // Animación de click
             this.style.transform = 'translateY(-10px) scale(0.98)';
             setTimeout(() => {
                 this.style.transform = 'translateY(-10px) scale(1)';
-                showNotification(`📂 Explorando categoría: ${categoryName}`, 'success');
+                showNotification(`🌸 Explorando fragancias ${categoryName.toLowerCase()}`, 'success');
+                
+                // Scroll a la sección de perfumes
+                document.querySelector('#perfumes').scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
             }, 200);
         });
 
-        // Efectos de hover avanzados
         card.addEventListener('mouseenter', function() {
             this.style.transform = 'translateY(-10px) scale(1.02)';
             
-            // Efecto de brillo en el icono
             const icon = this.querySelector('.category-icon');
             if (icon) {
                 icon.style.transform = 'scale(1.1) rotate(5deg)';
@@ -90,35 +88,29 @@ document.addEventListener('DOMContentLoaded', function() {
         card.addEventListener('mouseleave', function() {
             this.style.transform = 'translateY(0) scale(1)';
             
-            // Restaurar icono
             const icon = this.querySelector('.category-icon');
             if (icon) {
                 icon.style.transform = 'scale(1) rotate(0deg)';
             }
         });
-
-        // Animación de entrada escalonada
-        setTimeout(() => {
-            card.style.opacity = '1';
-            card.style.transform = 'translateY(0)';
-        }, index * 100);
     });
 
-    // ===== COMPARE BUTTONS CON ANIMACIONES =====
-    compareButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            const productCard = this.closest('.product-card');
-            const productName = productCard.querySelector('.product-name').textContent;
+    // ===== BOTONES DE PERFUMES =====
+    perfumeBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            const perfumeCard = this.closest('.perfume-card');
+            const perfumeName = perfumeCard.querySelector('.perfume-name').textContent;
+            const perfumeBrand = perfumeCard.querySelector('.perfume-brand').textContent;
             
-            // Animación de carga
             const originalText = this.innerHTML;
-            this.innerHTML = '<div class="pulse">⏳ Comparando...</div>';
-            this.style.opacity = '0.8';
+            this.innerHTML = '⏳ Cargando detalles...';
             this.disabled = true;
+            this.style.opacity = '0.7';
             
-            // Simular proceso de comparación
+            perfumeCard.classList.add('loading');
+            
             setTimeout(() => {
-                this.innerHTML = '✅ Comparación lista';
+                this.innerHTML = '✅ Ver Detalles';
                 this.style.backgroundColor = '#27ae60';
                 
                 setTimeout(() => {
@@ -126,24 +118,21 @@ document.addEventListener('DOMContentLoaded', function() {
                     this.style.opacity = '1';
                     this.style.backgroundColor = '';
                     this.disabled = false;
-                    showNotification(`💰 Comparación completa para: ${productName}`, 'success');
+                    perfumeCard.classList.remove('loading');
+                    
+                    showNotification(`🍾 Mostrando detalles de ${perfumeBrand} ${perfumeName}`, 'success');
                 }, 1000);
-            }, 2000);
-
-            // Efecto visual en la tarjeta
-            productCard.style.transform = 'translateY(-15px) scale(1.02)';
-            setTimeout(() => {
-                productCard.style.transform = 'translateY(-10px) scale(1)';
-            }, 300);
+            }, 1500);
         });
 
-        // Hover effect mejorado
-        button.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-2px)';
-            this.style.boxShadow = '0 8px 32px rgba(229, 9, 20, 0.3)';
+        btn.addEventListener('mouseenter', function() {
+            if (!this.disabled) {
+                this.style.transform = 'translateY(-2px)';
+                this.style.boxShadow = '0 8px 32px rgba(229, 9, 20, 0.3)';
+            }
         });
 
-        button.addEventListener('mouseleave', function() {
+        btn.addEventListener('mouseleave', function() {
             if (!this.disabled) {
                 this.style.transform = 'translateY(0)';
                 this.style.boxShadow = '';
@@ -151,24 +140,43 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // ===== MOBILE MENU MEJORADO =====
-    if (mobileToggle && navMenu) {
-        mobileToggle.addEventListener('click', function() {
-            const isOpen = navMenu.classList.contains('active');
+    // ===== NEWSLETTER =====
+    if (newsletterForm && newsletterInput) {
+        newsletterForm.addEventListener('submit', function(e) {
+            e.preventDefault();
             
-            navMenu.classList.toggle('active');
-            this.innerHTML = isOpen ? '☰' : '✕';
-            this.setAttribute('aria-expanded', !isOpen);
+            const email = newsletterInput.value.trim();
             
-            // Animación del botón
-            this.style.transform = 'rotate(180deg)';
-            setTimeout(() => {
-                this.style.transform = 'rotate(0deg)';
-            }, 300);
+            if (validateEmail(email)) {
+                const submitBtn = this.querySelector('.newsletter-btn');
+                const originalText = submitBtn.innerHTML;
+                
+                submitBtn.innerHTML = '⏳ Suscribiendo...';
+                submitBtn.disabled = true;
+                
+                setTimeout(() => {
+                    submitBtn.innerHTML = '✅ ¡Suscrito!';
+                    newsletterInput.value = '';
+                    
+                    setTimeout(() => {
+                        submitBtn.innerHTML = originalText;
+                        submitBtn.disabled = false;
+                        showNotification('¡Te has suscrito exitosamente! 📧', 'success');
+                    }, 2000);
+                }, 1500);
+            } else {
+                showNotification('Por favor ingresa un email válido', 'warning');
+                newsletterInput.focus();
+            }
         });
     }
 
-    // ===== SMOOTH SCROLL MEJORADO =====
+    function validateEmail(email) {
+        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return re.test(email);
+    }
+
+    // ===== SMOOTH SCROLL =====
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             e.preventDefault();
@@ -177,20 +185,10 @@ document.addEventListener('DOMContentLoaded', function() {
             if (target) {
                 const offsetTop = target.offsetTop - 100;
                 
-                // Smooth scroll
                 window.scrollTo({
                     top: offsetTop,
                     behavior: 'smooth'
                 });
-                
-                // Cerrar menú móvil si está abierto
-                if (navMenu && navMenu.classList.contains('active')) {
-                    navMenu.classList.remove('active');
-                    if (mobileToggle) {
-                        mobileToggle.innerHTML = '☰';
-                        mobileToggle.setAttribute('aria-expanded', 'false');
-                    }
-                }
 
                 // Highlight temporal del elemento
                 target.style.backgroundColor = 'rgba(229, 9, 20, 0.1)';
@@ -201,31 +199,10 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // ===== PERFUMES SECTION =====
-if (perfumesBtn) {
-    perfumesBtn.addEventListener('click', function(e) {
-        e.preventDefault();
-        
-        // Animación del botón
-        this.style.transform = 'translateY(-3px) scale(0.98)';
-        setTimeout(() => {
-            this.style.transform = 'translateY(-3px) scale(1.05)';
-            showNotification('🌸 Redirigiendo a la sección de perfumes...', 'success');
-            
-            // Redirigir de verdad
-            setTimeout(() => {
-                window.location.href = 'perfumes.html';
-            }, 1500);
-        }, 200);
-    });
-}
-
-
     // ===== SISTEMA DE NOTIFICACIONES =====
     function showNotification(message, type = 'info') {
         const notification = document.createElement('div');
         
-        // Estilos según el tipo
         const styles = {
             success: 'var(--primary-red)',
             info: 'var(--bg-card)',
@@ -255,12 +232,10 @@ if (perfumesBtn) {
         notification.textContent = message;
         document.body.appendChild(notification);
 
-        // Animación de entrada
         setTimeout(() => {
             notification.style.transform = 'translateX(0)';
         }, 100);
 
-        // Auto-remove
         setTimeout(() => {
             notification.style.transform = 'translateX(400px)';
             setTimeout(() => {
@@ -270,7 +245,6 @@ if (perfumesBtn) {
             }, 300);
         }, 3000);
 
-        // Click para cerrar
         notification.addEventListener('click', () => {
             notification.style.transform = 'translateX(400px)';
             setTimeout(() => {
@@ -281,7 +255,7 @@ if (perfumesBtn) {
         });
     }
 
-    // ===== INTERSECTION OBSERVER PARA ANIMACIONES =====
+    // ===== INTERSECTION OBSERVER =====
     const observerOptions = {
         root: null,
         rootMargin: '0px',
@@ -293,15 +267,12 @@ if (perfumesBtn) {
             if (entry.isIntersecting) {
                 entry.target.style.opacity = '1';
                 entry.target.style.transform = 'translateY(0)';
-                
-                // Agregar clase para animaciones CSS adicionales
                 entry.target.classList.add('animated');
             }
         });
     }, observerOptions);
 
-    // Observar elementos para animaciones
-    const elementsToAnimate = document.querySelectorAll('.product-card, .section-title, .perfumes-section');
+    const elementsToAnimate = document.querySelectorAll('.perfume-card, .section-title, .fragrance-category-card, .tip-card');
     elementsToAnimate.forEach(el => {
         el.style.opacity = '0';
         el.style.transform = 'translateY(30px)';
@@ -309,65 +280,66 @@ if (perfumesBtn) {
         observer.observe(el);
     });
 
-    // ===== EFECTOS DE PARTÍCULAS EN HERO =====
+    // ===== EFECTOS DE PARTÍCULAS =====
     function createParticle() {
-        const hero = document.querySelector('.hero');
+        const hero = document.querySelector('.perfumes-hero');
         if (!hero) return;
 
         const particle = document.createElement('div');
+        const icons = ['✨', '🌸', '🌟', '💫', '🌺', '🍃', '🔮'];
+        const randomIcon = icons[Math.floor(Math.random() * icons.length)];
+        
+        particle.innerHTML = randomIcon;
         particle.style.cssText = `
             position: absolute;
-            width: 4px;
-            height: 4px;
-            background: var(--primary-red);
-            border-radius: 50%;
+            font-size: ${Math.random() * 20 + 15}px;
             top: ${Math.random() * 100}%;
             left: ${Math.random() * 100}%;
-            animation: float 20s infinite linear;
-            opacity: 0.3;
+            animation: perfumeFloat 25s infinite linear;
+            opacity: ${Math.random() * 0.7 + 0.3};
             pointer-events: none;
+            z-index: 1;
         `;
         
         hero.appendChild(particle);
         
-        // Remover partícula después de la animación
         setTimeout(() => {
             if (hero.contains(particle)) {
                 hero.removeChild(particle);
             }
-        }, 20000);
+        }, 25000);
     }
 
-    // Crear partículas periódicamente
-    setInterval(createParticle, 3000);
+    setInterval(createParticle, 2000);
 
-    // ===== EASTER EGG - KONAMI CODE =====
-    let konamiCode = [];
-    const konamiSequence = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65]; // ↑↑↓↓←→←→BA
+    // ===== EASTER EGG =====
+    let secretCode = [];
+    const perfumeSecretSequence = ['p', 'e', 'r', 'f', 'u', 'm', 'e'];
 
     document.addEventListener('keydown', function(e) {
-        konamiCode.push(e.keyCode);
+        secretCode.push(e.key.toLowerCase());
         
-        if (konamiCode.length > konamiSequence.length) {
-            konamiCode.shift();
+        if (secretCode.length > perfumeSecretSequence.length) {
+            secretCode.shift();
         }
         
-        if (JSON.stringify(konamiCode) === JSON.stringify(konamiSequence)) {
-            showNotification('🎉 ¡Código Konami activado! Descuento especial desbloqueado', 'success');
+        if (JSON.stringify(secretCode) === JSON.stringify(perfumeSecretSequence)) {
+            showNotification('🌸 ¡Código secreto de perfumería activado! Descuento especial', 'success');
             
-            // Efecto rainbow
-            document.body.style.animation = 'rainbow 2s ease-in-out';
-            setTimeout(() => {
-                document.body.style.animation = '';
-            }, 2000);
+            perfumeCards.forEach((card, index) => {
+                setTimeout(() => {
+                    card.style.transform = 'scale(1.05)';
+                    setTimeout(() => {
+                        card.style.transform = 'scale(1)';
+                    }, 300);
+                }, index * 100);
+            });
             
-            konamiCode = [];
+            secretCode = [];
         }
     });
 
-    // ===== MEJORAS DE ACCESIBILIDAD =====
-    
-    // Focus visible para navegación por teclado
+    // ===== ACCESIBILIDAD =====
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Tab') {
             document.body.classList.add('keyboard-navigation');
@@ -378,81 +350,11 @@ if (perfumesBtn) {
         document.body.classList.remove('keyboard-navigation');
     });
 
-    // ===== PERFORMANCE OPTIMIZATIONS =====
+    // ===== INICIALIZACIÓN =====
+    console.log('🌸 Mundo de Fragancias cargado exitosamente!');
+    console.log('💡 Escribe "perfume" para activar el easter egg');
     
-    // Lazy loading para imágenes (si las hubiera)
-    const lazyImages = document.querySelectorAll('img[data-src]');
-    const imageObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const img = entry.target;
-                img.src = img.dataset.src;
-                img.classList.remove('lazy');
-                observer.unobserve(img);
-            }
-        });
-    });
-
-    lazyImages.forEach(img => imageObserver.observe(img));
-
-    // ===== INICIALIZACIÓN COMPLETA =====
-    console.log('🚀 PriceCompare cargado exitosamente!');
-    console.log('💡 Presiona ↑↑↓↓←→←→BA para activar el easter egg');
-    
-    // Mostrar notificación de bienvenida
     setTimeout(() => {
-        showNotification('¡Bienvenido a PriceCompare! 🛍️', 'success');
+        showNotification('¡Bienvenido a Mundo de Fragancias! 🛍️', 'success');
     }, 1000);
-
-    // ===== FUNCIONES AUXILIARES =====
-    
-    // Función para formatear precios
-    function formatPrice(price) {
-        return new Intl.NumberFormat('es-AR', {
-            style: 'currency',
-            currency: 'ARS'
-        }).format(price);
-    }
-
-    // Función para detectar dispositivo móvil
-    function isMobile() {
-        return window.innerWidth <= 768;
-    }
-
-    // Función para throttle en scroll events
-    function throttle(func, wait) {
-        let timeout;
-        return function executedFunction(...args) {
-            const later = () => {
-                clearTimeout(timeout);
-                func(...args);
-            };
-            clearTimeout(timeout);
-            timeout = setTimeout(later, wait);
-        };
-    }
-
-    // ===== EVENT LISTENERS ADICIONALES =====
-    
-    // Resize handler
-    window.addEventListener('resize', throttle(() => {
-        // Reajustar layout si es necesario
-        if (isMobile() && navMenu.classList.contains('active')) {
-            navMenu.classList.remove('active');
-            if (mobileToggle) {
-                mobileToggle.innerHTML = '☰';
-            }
-        }
-    }, 250));
-
-    // Prevenir zoom en doble tap en iOS
-    let lastTouchEnd = 0;
-    document.addEventListener('touchend', function(event) {
-        const now = (new Date()).getTime();
-        if (now - lastTouchEnd <= 300) {
-            event.preventDefault();
-        }
-        lastTouchEnd = now;
-    }, false);
-
 });
