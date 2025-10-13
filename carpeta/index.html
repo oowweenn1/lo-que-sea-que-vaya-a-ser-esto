@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mundo de Fragancias - Encuentra las mejores fragancias al mejor precio</title>
-    <meta name="description" content="Compara precios de perfumes de las mejores marcas del mundo. Encuentra tu fragancia perfecta.">
+    <title>Esencia Masculina</title>
+    <meta name="description" content="Perfumes masculinos de élite. Encuentra tu fragancia perfecta con poder y distinción.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -13,11 +13,11 @@
 <body>
     <header class="header">
         <nav class="nav-container">
-            <a href="#" class="logo">Mundo de Fragancias</a>
+            <a href="#" class="logo">Esencia Masculina</a>
             <ul class="nav-menu">
                 <li><a href="#inicio">Inicio</a></li>
                 <li><a href="#categorias">Categorías</a></li>
-                <li><a href="#perfumes">Perfumes</a></li>
+                <li><a href="#marcas">Marcas</a></li>
                 <li><a href="#consejos">Consejos</a></li>
             </ul>
             <form class="search-container" onsubmit="return false;">
@@ -31,22 +31,8 @@
         <section class="perfumes-hero" id="inicio">
             <div class="container">
                 <div class="perfumes-hero-content">
-                    <h1>Mundo de Fragancias</h1>
-                    <p>Descubre los aromas más exquisitos del mundo. Compara precios y encuentra tu fragancia perfecta.</p>
-                    <div class="perfumes-stats">
-                        <div class="stat-item">
-                            <span class="stat-number">500+</span>
-                            <span class="stat-label">Fragancias</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number">50+</span>
-                            <span class="stat-label">Marcas Premium</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number">24/7</span>
-                            <span class="stat-label">Asesoramiento</span>
-                        </div>
-                    </div>
+                    <h1>Esencia Masculina</h1>
+                    <p>Fragancias de élite para hombres que definen su presencia. Poder, distinción y carácter en cada aroma.</p>
                 </div>
             </div>
         </section>
@@ -55,240 +41,104 @@
             <section class="section" id="categorias">
                 <h2 class="section-title">Categorías de Fragancias</h2>
                 <div class="fragrance-categories-grid">
-                    <div class="fragrance-category-card">
+                    <div class="fragrance-category-card" style="background: var(--gradient-gold);">
                         <div class="category-icon">🌸</div>
-                        <h3>Florales</h3>
+                        <h3 style="color:var(--burgundy)">Florales</h3>
                         <p>Delicadas y femeninas, con notas de rosa, jazmín y peonía</p>
-                        <span class="category-count">120 fragancias</span>
+                        <button class="category-btn btn-burgundy">Explorar</button>
                     </div>
-                    <div class="fragrance-category-card">
+                    <div class="fragrance-category-card" style="background: var(--gradient-burgundy);">
                         <div class="category-icon">🌳</div>
-                        <h3>Amaderadas</h3>
+                        <h3 style="color:var(--primary-gold)">Amaderadas</h3>
                         <p>Elegantes y sofisticadas, con cedro, sándalo y vetiver</p>
-                        <span class="category-count">85 fragancias</span>
+                        <button class="category-btn btn-gold">Explorar</button>
                     </div>
-                    <div class="fragrance-category-card">
+                    <div class="fragrance-category-card" style="background: var(--gradient-silver);">
                         <div class="category-icon">🍋</div>
-                        <h3>Frescas</h3>
+                        <h3 style="color:var(--burgundy)">Frescas</h3>
                         <p>Revitalizantes y energéticas, con cítricos y notas marinas</p>
-                        <span class="category-count">95 fragancias</span>
+                        <button class="category-btn btn-burgundy">Explorar</button>
                     </div>
-                    <div class="fragrance-category-card">
+                    <div class="fragrance-category-card" style="background: var(--gradient-dark);">
                         <div class="category-icon">🌟</div>
-                        <h3>Orientales</h3>
+                        <h3 style="color:var(--primary-gold)">Orientales</h3>
                         <p>Misteriosas y sensuales, con especias, ámbar y vainilla</p>
-                        <span class="category-count">75 fragancias</span>
+                        <button class="category-btn btn-gold">Explorar</button>
                     </div>
-                    <div class="fragrance-category-card">
+                    <div class="fragrance-category-card" style="background: var(--gradient-primary);">
                         <div class="category-icon">🍰</div>
-                        <h3>Gourmand</h3>
+                        <h3 style="color:var(--burgundy)">Gourmand</h3>
                         <p>Dulces y apetitosas, con chocolate, caramelo y frutas</p>
-                        <span class="category-count">60 fragancias</span>
+                        <button class="category-btn btn-burgundy">Explorar</button>
                     </div>
-                    <div class="fragrance-category-card">
+                    <div class="fragrance-category-card" style="background: var(--gradient-copper);">
                         <div class="category-icon">🌶️</div>
-                        <h3>Especiadas</h3>
+                        <h3 style="color:var(--primary-gold)">Especiadas</h3>
                         <p>Intensas y cautivadoras, con pimienta, canela y clavo</p>
-                        <span class="category-count">45 fragancias</span>
+                        <button class="category-btn btn-gold">Explorar</button>
                     </div>
                 </div>
             </section>
 
                 <section class="section" id="marcas">
                     <h2 class="section-title">Marcas Famosas de Perfumes</h2>
-                    <div class="fragrance-categories-grid">
-                        <div class="fragrance-category-card">
-                            <div class="category-icon">🌟</div>
-                            <h3>Chanel</h3>
+                    <div class="brands-grid">
+                        <div class="brand-card" data-logo="chanel" style="background: var(--gradient-gold);">
+                            <div class="brand-icon">👑</div>
+                            <h3 style="color:var(--burgundy)">Chanel</h3>
                             <p>Elegancia atemporal y sofisticación francesa en cada fragancia.</p>
-                            <span class="category-count">15 perfumes</span>
+                            <button class="brand-btn btn-burgundy">Ver perfumes</button>
                         </div>
-                        <div class="fragrance-category-card">
-                            <div class="category-icon">🌟</div>
-                            <h3>Dior</h3>
+                        <div class="brand-card" data-logo="dior" style="background: var(--gradient-burgundy);">
+                            <div class="brand-icon">💎</div>
+                            <h3 style="color:var(--primary-gold)">Dior</h3>
                             <p>Innovación y lujo, con aromas icónicos y modernos.</p>
-                            <span class="category-count">12 perfumes</span>
+                            <button class="brand-btn btn-gold">Ver perfumes</button>
                         </div>
-                        <div class="fragrance-category-card">
-                            <div class="category-icon">🌟</div>
-                            <h3>Versace</h3>
+                        <div class="brand-card" data-logo="versace" style="background: var(--gradient-silver);">
+                            <div class="brand-icon">⚜️</div>
+                            <h3 style="color:var(--burgundy)">Versace</h3>
                             <p>Estilo audaz y glamour italiano en cada esencia.</p>
-                            <span class="category-count">10 perfumes</span>
+                            <button class="brand-btn btn-burgundy">Ver perfumes</button>
                         </div>
-                        <div class="fragrance-category-card">
-                            <div class="category-icon">🌟</div>
-                            <h3>Giorgio Armani</h3>
+                        <div class="brand-card" data-logo="armani" style="background: var(--gradient-dark);">
+                            <div class="brand-icon">🖤</div>
+                            <h3 style="color:var(--primary-gold)">Giorgio Armani</h3>
                             <p>Minimalismo elegante y frescura mediterránea.</p>
-                            <span class="category-count">9 perfumes</span>
+                            <button class="brand-btn btn-gold">Ver perfumes</button>
                         </div>
-                        <div class="fragrance-category-card">
-                            <div class="category-icon">🌟</div>
-                            <h3>Bulgari</h3>
+                        <div class="brand-card" data-logo="bulgari" style="background: var(--gradient-primary);">
+                            <div class="brand-icon">🔱</div>
+                            <h3 style="color:var(--burgundy)">Bulgari</h3>
                             <p>Lujo contemporáneo y notas cristalinas únicas.</p>
-                            <span class="category-count">8 perfumes</span>
+                            <button class="brand-btn btn-burgundy">Ver perfumes</button>
                         </div>
-                        <div class="fragrance-category-card">
-                            <div class="category-icon">🌟</div>
-                            <h3>Calvin Klein</h3>
+                        <div class="brand-card" data-logo="calvin" style="background: var(--gradient-copper);">
+                            <div class="brand-icon">�</div>
+                            <h3 style="color:var(--primary-gold)">Calvin Klein</h3>
                             <p>Modernidad y frescura para todos los estilos.</p>
-                            <span class="category-count">11 perfumes</span>
+                            <button class="brand-btn btn-gold">Ver perfumes</button>
                         </div>
-                        <div class="fragrance-category-card">
-                            <div class="category-icon">🌟</div>
-                            <h3>Lancôme</h3>
+                        <div class="brand-card" data-logo="lancome" style="background: var(--gradient-gold);">
+                            <div class="brand-icon">�</div>
+                            <h3 style="color:var(--burgundy)">Lancôme</h3>
                             <p>Romanticismo y feminidad en cada aroma.</p>
-                            <span class="category-count">7 perfumes</span>
+                            <button class="brand-btn btn-burgundy">Ver perfumes</button>
                         </div>
-                        <div class="fragrance-category-card">
-                            <div class="category-icon">🌟</div>
-                            <h3>Paco Rabanne</h3>
+                        <div class="brand-card" data-logo="paco" style="background: var(--gradient-burgundy);">
+                            <div class="brand-icon">🔥</div>
+                            <h3 style="color:var(--primary-gold)">Paco Rabanne</h3>
                             <p>Fragancias atrevidas y originales para destacar.</p>
-                            <span class="category-count">6 perfumes</span>
+                            <button class="brand-btn btn-gold">Ver perfumes</button>
                         </div>
-                        <div class="fragrance-category-card">
-                            <div class="category-icon">🌟</div>
-                            <h3>Yves Saint Laurent</h3>
+                        <div class="brand-card" data-logo="ysl" style="background: var(--gradient-silver);">
+                            <div class="brand-icon">✨</div>
+                            <h3 style="color:var(--burgundy)">Yves Saint Laurent</h3>
                             <p>Lujo rebelde y sensualidad parisina.</p>
-                            <span class="category-count">8 perfumes</span>
+                            <button class="brand-btn btn-burgundy">Ver perfumes</button>
                         </div>
+                    </div>
                 </section>
-            <section class="section" id="perfumes">
-                <h2 class="section-title">Perfumes Más Populares</h2>
-                <div class="perfumes-grid">
-                    <article class="perfume-card">
-                        <div class="perfume-image">
-                            <div class="perfume-bottle">🍾</div>
-                            <div class="perfume-badge">Bestseller</div>
-                        </div>
-                        <div class="perfume-info">
-                            <div class="perfume-brand">Chanel</div>
-                            <h3 class="perfume-name">Chanel N°5</h3>
-                            <div class="perfume-type">Eau de Parfum - 100ml</div>
-                            <div class="perfume-description">
-                                El icónico perfume francés con notas de ylang-ylang, rosa y sándalo.
-                            </div>
-                            <div class="perfume-notes">
-                                <span class="note">Ylang-Ylang</span>
-                                <span class="note">Rosa</span>
-                                <span class="note">Sándalo</span>
-                            </div>
-                            <div class="perfume-price">$185.990</div>
-                            <button class="perfume-btn">Ver Detalles</button>
-                        </div>
-                    </article>
-
-                    <article class="perfume-card">
-                        <div class="perfume-image">
-                            <div class="perfume-bottle">🍾</div>
-                            <div class="perfume-badge">Nuevo</div>
-                        </div>
-                        <div class="perfume-info">
-                            <div class="perfume-brand">Dior</div>
-                            <h3 class="perfume-name">Sauvage</h3>
-                            <div class="perfume-type">Eau de Toilette - 100ml</div>
-                            <div class="perfume-description">
-                                Fragancia masculina fresca y especiada con bergamota y pimienta.
-                            </div>
-                            <div class="perfume-notes">
-                                <span class="note">Bergamota</span>
-                                <span class="note">Pimienta</span>
-                                <span class="note">Ambroxan</span>
-                            </div>
-                            <div class="perfume-price">$142.500</div>
-                            <button class="perfume-btn">Ver Detalles</button>
-                        </div>
-                    </article>
-
-                    <article class="perfume-card">
-                        <div class="perfume-image">
-                            <div class="perfume-bottle">🍾</div>
-                            <div class="perfume-badge">Exclusivo</div>
-                        </div>
-                        <div class="perfume-info">
-                            <div class="perfume-brand">Versace</div>
-                            <h3 class="perfume-name">Bright Crystal</h3>
-                            <div class="perfume-type">Eau de Toilette - 90ml</div>
-                            <div class="perfume-description">
-                                Fragancia floral y frutal con granada, peonía y magnolia.
-                            </div>
-                            <div class="perfume-notes">
-                                <span class="note">Granada</span>
-                                <span class="note">Peonía</span>
-                                <span class="note">Magnolia</span>
-                            </div>
-                            <div class="perfume-price">$89.990</div>
-                            <button class="perfume-btn">Ver Detalles</button>
-                        </div>
-                    </article>
-
-                    <article class="perfume-card">
-                        <div class="perfume-image">
-                            <div class="perfume-bottle">🍾</div>
-                            <div class="perfume-badge">Top Ventas</div>
-                        </div>
-                        <div class="perfume-info">
-                            <div class="perfume-brand">Giorgio Armani</div>
-                            <h3 class="perfume-name">Acqua di Giò</h3>
-                            <div class="perfume-type">Eau de Toilette - 100ml</div>
-                            <div class="perfume-description">
-                                Fragancia acuática masculina con notas marinas y cítricas.
-                            </div>
-                            <div class="perfume-notes">
-                                <span class="note">Bergamota</span>
-                                <span class="note">Notas Marinas</span>
-                                <span class="note">Cedro</span>
-                            </div>
-                            <div class="perfume-price">$125.750</div>
-                            <button class="perfume-btn">Ver Detalles</button>
-                        </div>
-                    </article>
-
-                    <article class="perfume-card">
-                        <div class="perfume-image">
-                            <div class="perfume-bottle">🍾</div>
-                            <div class="perfume-badge">Oferta</div>
-                        </div>
-                        <div class="perfume-info">
-                            <div class="perfume-brand">Bulgari</div>
-                            <h3 class="perfume-name">Omnia Crystalline</h3>
-                            <div class="perfume-type">Eau de Toilette - 65ml</div>
-                            <div class="perfume-description">
-                                Fragancia cristalina y luminosa con bambú, pera y loto.
-                            </div>
-                            <div class="perfume-notes">
-                                <span class="note">Bambú</span>
-                                <span class="note">Pera</span>
-                                <span class="note">Loto</span>
-                            </div>
-                            <div class="perfume-price">$98.200</div>
-                            <button class="perfume-btn">Ver Detalles</button>
-                        </div>
-                    </article>
-
-                    <article class="perfume-card">
-                        <div class="perfume-image">
-                            <div class="perfume-bottle">🍾</div>
-                            <div class="perfume-badge">Premium</div>
-                        </div>
-                        <div class="perfume-info">
-                            <div class="perfume-brand">Chanel</div>
-                            <h3 class="perfume-name">Coco Mademoiselle</h3>
-                            <div class="perfume-type">Eau de Parfum - 100ml</div>
-                            <div class="perfume-description">
-                                Fragancia moderna y rebelde con naranja, rosa y pachulí.
-                            </div>
-                            <div class="perfume-notes">
-                                <span class="note">Naranja</span>
-                                <span class="note">Rosa</span>
-                                <span class="note">Pachulí</span>
-                            </div>
-                            <div class="perfume-price">$175.900</div>
-                            <button class="perfume-btn">Ver Detalles</button>
-                        </div>
-                    </article>
-                </div>
-            </section>
-
             <section class="section perfume-tips" id="consejos">
                 <h2 class="section-title">Consejos de Expertos</h2>
                 <div class="tips-grid">

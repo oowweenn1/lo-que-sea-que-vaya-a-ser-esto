@@ -48,8 +48,8 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
         searchInput.addEventListener('focus', function() {
-            this.parentElement.style.borderColor = 'var(--primary-red)';
-            this.parentElement.style.boxShadow = '0 0 20px rgba(229, 9, 20, 0.2)';
+            this.parentElement.style.borderColor = 'var(--primary-silver)';
+            this.parentElement.style.boxShadow = '0 0 20px rgba(192, 192, 192, 0.4)';
         });
 
         searchInput.addEventListener('blur', function() {
@@ -66,13 +66,16 @@ document.addEventListener('DOMContentLoaded', function() {
             this.style.transform = 'translateY(-10px) scale(0.98)';
             setTimeout(() => {
                 this.style.transform = 'translateY(-10px) scale(1)';
-                showNotification(`🌸 Explorando fragancias ${categoryName.toLowerCase()}`, 'success');
+                showNotification(`🌟 Explorando fragancias ${categoryName.toLowerCase()}`, 'success');
                 
-                // Scroll a la sección de perfumes
-                document.querySelector('#perfumes').scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
+                // Scroll a la sección de perfumes si existe
+                const perfumesSection = document.querySelector('#perfumes');
+                if (perfumesSection) {
+                    perfumesSection.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
             }, 200);
         });
 
@@ -128,7 +131,7 @@ document.addEventListener('DOMContentLoaded', function() {
         btn.addEventListener('mouseenter', function() {
             if (!this.disabled) {
                 this.style.transform = 'translateY(-2px)';
-                this.style.boxShadow = '0 8px 32px rgba(229, 9, 20, 0.3)';
+                this.style.boxShadow = '0 8px 32px rgba(192, 192, 192, 0.5)';
             }
         });
 
@@ -191,7 +194,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
 
                 // Highlight temporal del elemento
-                target.style.backgroundColor = 'rgba(229, 9, 20, 0.1)';
+                target.style.backgroundColor = 'rgba(192, 192, 192, 0.1)';
                 setTimeout(() => {
                     target.style.backgroundColor = '';
                 }, 1000);
@@ -204,7 +207,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const notification = document.createElement('div');
         
         const styles = {
-            success: 'var(--primary-red)',
+            success: 'var(--primary-silver)',
             info: 'var(--bg-card)',
             warning: '#f39c12',
             error: '#e74c3c'
@@ -215,7 +218,7 @@ document.addEventListener('DOMContentLoaded', function() {
             top: 100px;
             right: 20px;
             background: ${styles[type] || styles.info};
-            color: white;
+            color: ${type === 'success' ? '#000' : 'white'};
             padding: 1rem 1.5rem;
             border-radius: 12px;
             box-shadow: var(--shadow-dark);
@@ -286,7 +289,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (!hero) return;
 
         const particle = document.createElement('div');
-        const icons = ['✨', '🌸', '🌟', '💫', '🌺', '🍃', '🔮'];
+        const icons = ['🍷', '🌹', '💎', '🔥', '⚜️', '🖤'];
         const randomIcon = icons[Math.floor(Math.random() * icons.length)];
         
         particle.innerHTML = randomIcon;
@@ -324,7 +327,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         if (JSON.stringify(secretCode) === JSON.stringify(perfumeSecretSequence)) {
-            showNotification('🌸 ¡Código secreto de perfumería activado! Descuento especial', 'success');
+            showNotification('👑 ¡Código secreto activado! Descuento VIP disponible', 'success');
             
             perfumeCards.forEach((card, index) => {
                 setTimeout(() => {
@@ -351,10 +354,10 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // ===== INICIALIZACIÓN =====
-    console.log('🌸 Mundo de Fragancias cargado exitosamente!');
+    console.log('👑 Esencia Masculina cargado exitosamente!');
     console.log('💡 Escribe "perfume" para activar el easter egg');
     
     setTimeout(() => {
-        showNotification('¡Bienvenido a Mundo de Fragancias! 🛍️', 'success');
+        showNotification('¡Bienvenido a Esencia Masculina! 🛍️', 'success');
     }, 1000);
 });
