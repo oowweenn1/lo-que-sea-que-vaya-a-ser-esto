@@ -1,179 +1,136 @@
-// ===== PERFUMECOMPARE - JAVASCRIPT =====
+// ===== ESENCIA MASCULINA - JAVASCRIPT =====
 document.addEventListener('DOMContentLoaded', function() {
     
     // ===== VARIABLES GLOBALES =====
     const header = document.querySelector('.header');
-    const searchBtn = document.querySelector('.search-btn');
-    const searchInput = document.querySelector('.search-input');
+    const hamburger = document.querySelector('.hamburger');
+    const mobileMenu = document.querySelector('.mobile-menu');
+    const mobileMenuLinks = document.querySelectorAll('.mobile-menu-link');
     const categoryCards = document.querySelectorAll('.fragrance-category-card');
-    const perfumeCards = document.querySelectorAll('.perfume-card');
-    const perfumeBtns = document.querySelectorAll('.perfume-btn');
     const newsletterForm = document.querySelector('.newsletter-form');
-    const newsletterInput = document.querySelector('.newsletter-input');
+    const body = document.body;
 
     // ===== HEADER SCROLL EFFECT =====
+    let lastScroll = 0;
     window.addEventListener('scroll', () => {
-        if (window.scrollY > 100) {
+        const currentScroll = window.scrollY;
+        
+        if (currentScroll > 100) {
             header.classList.add('scrolled');
         } else {
             header.classList.remove('scrolled');
         }
+        
+        lastScroll = currentScroll;
     });
 
-    // ===== BÚSQUEDA =====
-    function performSearch() {
-        if (searchInput.value.trim()) {
-            searchBtn.style.transform = 'scale(0.9)';
-            setTimeout(() => {
-                searchBtn.style.transform = 'scale(1.1)';
-                setTimeout(() => {
-                    searchBtn.style.transform = 'scale(1)';
-                    showNotification(`🔍 Buscando: "${searchInput.value}"`, 'info');
-                }, 150);
-            }, 150);
-        } else {
-            showNotification('⚠️ Por favor ingresa un término de búsqueda', 'warning');
-        }
-    }
+    // ===== HAMBURGER MENU =====
+    if (hamburger && mobileMenu) {
+        hamburger.addEventListener('click', () => {
+            const isActive = hamburger.classList.contains('active');
+            
+            hamburger.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+            body.classList.toggle('mobile-menu-open');
+            
+            // Actualizar aria-expanded
+            hamburger.setAttribute('aria-expanded', !isActive);
+        });
 
-    if (searchBtn) {
-        searchBtn.addEventListener('click', performSearch);
-    }
+        // Cerrar menú al hacer click en un link
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                mobileMenu.classList.remove('active');
+                body.classList.remove('mobile-menu-open');
+                hamburger.setAttribute('aria-expanded', 'false');
+            });
+        });
 
-    if (searchInput) {
-        searchInput.addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                performSearch();
+        // Cerrar menú al hacer click fuera (en el overlay)
+        body.addEventListener('click', (e) => {
+            if (body.classList.contains('mobile-menu-open') && 
+                !mobileMenu.contains(e.target) && 
+                !hamburger.contains(e.target)) {
+                hamburger.classList.remove('active');
+                mobileMenu.classList.remove('active');
+                body.classList.remove('mobile-menu-open');
+                hamburger.setAttribute('aria-expanded', 'false');
             }
         });
-
-        searchInput.addEventListener('focus', function() {
-            this.parentElement.style.borderColor = 'var(--primary-silver)';
-            this.parentElement.style.boxShadow = '0 0 20px rgba(192, 192, 192, 0.4)';
-        });
-
-        searchInput.addEventListener('blur', function() {
-            this.parentElement.style.borderColor = 'var(--border-color)';
-            this.parentElement.style.boxShadow = 'none';
-        });
     }
 
-    // ===== CATEGORÍAS =====
+    // ===== CATEGORÍAS INTERACTIVAS =====
     categoryCards.forEach((card, index) => {
-        card.addEventListener('click', function() {
+        card.addEventListener('click', function(e) {
+            // Si el click fue en el botón, no hacer nada (el botón tiene su propio handler)
+            if (e.target.classList.contains('category-btn')) return;
+            
             const categoryName = this.querySelector('h3').textContent;
             
+            // Animación de click
             this.style.transform = 'translateY(-10px) scale(0.98)';
             setTimeout(() => {
-                this.style.transform = 'translateY(-10px) scale(1)';
-                showNotification(`🌟 Explorando fragancias ${categoryName.toLowerCase()}`, 'success');
-                
-                // Scroll a la sección de perfumes si existe
-                const perfumesSection = document.querySelector('#perfumes');
-                if (perfumesSection) {
-                    perfumesSection.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
+                this.style.transform = '';
+                showNotification(` Explorando fragancias ${categoryName.toLowerCase()}`, 'success');
             }, 200);
         });
 
+        // Animación hover mejorada
         card.addEventListener('mouseenter', function() {
             this.style.transform = 'translateY(-10px) scale(1.02)';
-            
-            const icon = this.querySelector('.category-icon');
-            if (icon) {
-                icon.style.transform = 'scale(1.1) rotate(5deg)';
-            }
         });
 
         card.addEventListener('mouseleave', function() {
-            this.style.transform = 'translateY(0) scale(1)';
-            
-            const icon = this.querySelector('.category-icon');
-            if (icon) {
-                icon.style.transform = 'scale(1) rotate(0deg)';
-            }
+            this.style.transform = '';
         });
     });
 
-    // ===== BOTONES DE PERFUMES =====
-    perfumeBtns.forEach(btn => {
-        btn.addEventListener('click', function() {
-            const perfumeCard = this.closest('.perfume-card');
-            const perfumeName = perfumeCard.querySelector('.perfume-name').textContent;
-            const perfumeBrand = perfumeCard.querySelector('.perfume-brand').textContent;
+    // ===== BOTONES DE CATEGORÍAS =====
+    const categoryBtns = document.querySelectorAll('.category-btn');
+    categoryBtns.forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            const card = this.closest('.fragrance-category-card');
+            const categoryName = card.querySelector('h3').textContent;
             
-            const originalText = this.innerHTML;
-            this.innerHTML = '⏳ Cargando detalles...';
-            this.disabled = true;
-            this.style.opacity = '0.7';
-            
-            perfumeCard.classList.add('loading');
-            
-            setTimeout(() => {
-                this.innerHTML = '✅ Ver Detalles';
-                this.style.backgroundColor = '#27ae60';
-                
-                setTimeout(() => {
-                    this.innerHTML = originalText;
-                    this.style.opacity = '1';
-                    this.style.backgroundColor = '';
-                    this.disabled = false;
-                    perfumeCard.classList.remove('loading');
-                    
-                    showNotification(`🍾 Mostrando detalles de ${perfumeBrand} ${perfumeName}`, 'success');
-                }, 1000);
-            }, 1500);
-        });
-
-        btn.addEventListener('mouseenter', function() {
-            if (!this.disabled) {
-                this.style.transform = 'translateY(-2px)';
-                this.style.boxShadow = '0 8px 32px rgba(192, 192, 192, 0.5)';
-            }
-        });
-
-        btn.addEventListener('mouseleave', function() {
-            if (!this.disabled) {
-                this.style.transform = 'translateY(0)';
-                this.style.boxShadow = '';
-            }
+            showNotification(` Cargando colección ${categoryName}...`, 'info');
         });
     });
 
     // ===== NEWSLETTER =====
-    if (newsletterForm && newsletterInput) {
+    if (newsletterForm) {
         newsletterForm.addEventListener('submit', function(e) {
             e.preventDefault();
             
-            const email = newsletterInput.value.trim();
+            const emailInput = this.querySelector('.newsletter-input');
+            const email = emailInput.value.trim();
+            const submitBtn = this.querySelector('.newsletter-btn');
             
             if (validateEmail(email)) {
-                const submitBtn = this.querySelector('.newsletter-btn');
-                const originalText = submitBtn.innerHTML;
+                const originalText = submitBtn.textContent;
                 
-                submitBtn.innerHTML = '⏳ Suscribiendo...';
+                submitBtn.textContent = '⏳ Suscribiendo...';
                 submitBtn.disabled = true;
                 
                 setTimeout(() => {
-                    submitBtn.innerHTML = '✅ ¡Suscrito!';
-                    newsletterInput.value = '';
+                    submitBtn.textContent = '✅ ¡Suscrito!';
+                    emailInput.value = '';
                     
                     setTimeout(() => {
-                        submitBtn.innerHTML = originalText;
+                        submitBtn.textContent = originalText;
                         submitBtn.disabled = false;
-                        showNotification('¡Te has suscrito exitosamente! 📧', 'success');
+                        showNotification('¡Bienvenido! Recibirás nuestras mejores ofertas ', 'success');
                     }, 2000);
                 }, 1500);
             } else {
-                showNotification('Por favor ingresa un email válido', 'warning');
-                newsletterInput.focus();
+                showNotification(' Por favor ingresa un email válido', 'warning');
+                emailInput.focus();
             }
         });
     }
 
+    // ===== VALIDACIÓN DE EMAIL =====
     function validateEmail(email) {
         const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return re.test(email);
@@ -183,7 +140,11 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
+            const targetId = this.getAttribute('href');
+            
+            if (targetId === '#') return;
+            
+            const target = document.querySelector(targetId);
             
             if (target) {
                 const offsetTop = target.offsetTop - 100;
@@ -193,8 +154,9 @@ document.addEventListener('DOMContentLoaded', function() {
                     behavior: 'smooth'
                 });
 
-                // Highlight temporal del elemento
-                target.style.backgroundColor = 'rgba(192, 192, 192, 0.1)';
+                // Highlight temporal
+                target.style.transition = 'background-color 0.3s ease';
+                target.style.backgroundColor = 'rgba(212, 175, 55, 0.1)';
                 setTimeout(() => {
                     target.style.backgroundColor = '';
                 }, 1000);
@@ -207,8 +169,8 @@ document.addEventListener('DOMContentLoaded', function() {
         const notification = document.createElement('div');
         
         const styles = {
-            success: 'var(--primary-silver)',
-            info: 'var(--bg-card)',
+            success: 'var(--primary-gold)',
+            info: 'var(--primary-silver)',
             warning: '#f39c12',
             error: '#e74c3c'
         };
@@ -218,18 +180,18 @@ document.addEventListener('DOMContentLoaded', function() {
             top: 100px;
             right: 20px;
             background: ${styles[type] || styles.info};
-            color: ${type === 'success' ? '#000' : 'white'};
+            color: ${type === 'success' ? '#000' : type === 'info' ? '#000' : 'white'};
             padding: 1rem 1.5rem;
             border-radius: 12px;
-            box-shadow: var(--shadow-dark);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
             z-index: 10000;
             transform: translateX(400px);
             transition: all 0.3s ease;
-            border: 1px solid var(--border-color);
             max-width: 350px;
-            font-weight: 500;
-            font-size: 0.9rem;
+            font-weight: 600;
+            font-size: 0.95rem;
             line-height: 1.4;
+            border: 2px solid rgba(0, 0, 0, 0.2);
         `;
         
         notification.textContent = message;
@@ -246,8 +208,9 @@ document.addEventListener('DOMContentLoaded', function() {
                     document.body.removeChild(notification);
                 }
             }, 300);
-        }, 3000);
+        }, 3500);
 
+        // Click para cerrar
         notification.addEventListener('click', () => {
             notification.style.transform = 'translateX(400px)';
             setTimeout(() => {
@@ -262,44 +225,46 @@ document.addEventListener('DOMContentLoaded', function() {
     const observerOptions = {
         root: null,
         rootMargin: '0px',
-        threshold: 0.1
+        threshold: 0.15
     };
 
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
                 entry.target.classList.add('animated');
+                observer.unobserve(entry.target);
             }
         });
     }, observerOptions);
 
-    const elementsToAnimate = document.querySelectorAll('.perfume-card, .section-title, .fragrance-category-card, .tip-card');
-    elementsToAnimate.forEach(el => {
+    const elementsToAnimate = document.querySelectorAll(
+        '.fragrance-category-card, .tip-card, .section-title'
+    );
+    
+    elementsToAnimate.forEach((el, index) => {
         el.style.opacity = '0';
         el.style.transform = 'translateY(30px)';
-        el.style.transition = 'all 0.6s ease';
+        el.style.transition = `all 0.6s ease ${index * 0.1}s`;
         observer.observe(el);
     });
 
-    // ===== EFECTOS DE PARTÍCULAS =====
+    // ===== EFECTOS DE PARTÍCULAS EN HERO =====
     function createParticle() {
         const hero = document.querySelector('.perfumes-hero');
         if (!hero) return;
 
         const particle = document.createElement('div');
-        const icons = ['🍷', '🌹', '💎', '🔥', '⚜️', '🖤'];
+        const icons = ['💎', '✨', '⭐', '🌟'];
         const randomIcon = icons[Math.floor(Math.random() * icons.length)];
         
         particle.innerHTML = randomIcon;
         particle.style.cssText = `
             position: absolute;
-            font-size: ${Math.random() * 20 + 15}px;
+            font-size: ${Math.random() * 25 + 15}px;
             top: ${Math.random() * 100}%;
             left: ${Math.random() * 100}%;
             animation: perfumeFloat 25s infinite linear;
-            opacity: ${Math.random() * 0.7 + 0.3};
+            opacity: ${Math.random() * 0.6 + 0.3};
             pointer-events: none;
             z-index: 1;
         `;
@@ -313,27 +278,30 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 25000);
     }
 
-    setInterval(createParticle, 2000);
+    // Crear partículas cada 3 segundos
+    setInterval(createParticle, 3000);
 
     // ===== EASTER EGG =====
     let secretCode = [];
-    const perfumeSecretSequence = ['p', 'e', 'r', 'f', 'u', 'm', 'e'];
+    const perfumeSequence = ['p', 'e', 'r', 'f', 'u', 'm', 'e'];
 
     document.addEventListener('keydown', function(e) {
         secretCode.push(e.key.toLowerCase());
         
-        if (secretCode.length > perfumeSecretSequence.length) {
+        if (secretCode.length > perfumeSequence.length) {
             secretCode.shift();
         }
         
-        if (JSON.stringify(secretCode) === JSON.stringify(perfumeSecretSequence)) {
-            showNotification('👑 ¡Código secreto activado! Descuento VIP disponible', 'success');
+        if (JSON.stringify(secretCode) === JSON.stringify(perfumeSequence)) {
+            showNotification(' ¡Código secreto activado! Descuento VIP disponible', 'success');
             
-            perfumeCards.forEach((card, index) => {
+            // Animación especial en todas las cards
+            const allCards = document.querySelectorAll('.fragrance-category-card, .tip-card');
+            allCards.forEach((card, index) => {
                 setTimeout(() => {
-                    card.style.transform = 'scale(1.05)';
+                    card.style.transform = 'scale(1.05) rotate(2deg)';
                     setTimeout(() => {
-                        card.style.transform = 'scale(1)';
+                        card.style.transform = '';
                     }, 300);
                 }, index * 100);
             });
@@ -342,10 +310,18 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // ===== ACCESIBILIDAD =====
+    // ===== ACCESIBILIDAD - NAVEGACIÓN POR TECLADO =====
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Tab') {
             document.body.classList.add('keyboard-navigation');
+        }
+        
+        // Cerrar mobile menu con ESC
+        if (e.key === 'Escape' && body.classList.contains('mobile-menu-open')) {
+            hamburger.classList.remove('active');
+            mobileMenu.classList.remove('active');
+            body.classList.remove('mobile-menu-open');
+            hamburger.setAttribute('aria-expanded', 'false');
         }
     });
 
@@ -353,11 +329,60 @@ document.addEventListener('DOMContentLoaded', function() {
         document.body.classList.remove('keyboard-navigation');
     });
 
+    // ===== PREVENIR SCROLL HORIZONTAL =====
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    document.addEventListener('touchstart', e => {
+        touchStartX = e.changedTouches[0].screenX;
+    });
+
+    document.addEventListener('touchend', e => {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+    });
+
+    function handleSwipe() {
+        // Si el usuario hace swipe desde la derecha, cerrar el menú
+        if (body.classList.contains('mobile-menu-open') && touchEndX < touchStartX - 50) {
+            hamburger.classList.remove('active');
+            mobileMenu.classList.remove('active');
+            body.classList.remove('mobile-menu-open');
+            hamburger.setAttribute('aria-expanded', 'false');
+        }
+    }
+
+    // ===== PERFORMANCE - LAZY LOADING IMAGES =====
+    if ('IntersectionObserver' in window) {
+        const imageObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    if (img.dataset.src) {
+                        img.src = img.dataset.src;
+                        img.removeAttribute('data-src');
+                        imageObserver.unobserve(img);
+                    }
+                }
+            });
+        });
+
+        document.querySelectorAll('img[data-src]').forEach(img => {
+            imageObserver.observe(img);
+        });
+    }
+
     // ===== INICIALIZACIÓN =====
-    console.log('👑 Esencia Masculina cargado exitosamente!');
-    console.log('💡 Escribe "perfume" para activar el easter egg');
+    console.log('👔 Esencia Masculina cargado exitosamente!');
+    console.log('💡 Tip: Escribe "perfume" para activar el easter egg');
     
+    // Notificación de bienvenida
     setTimeout(() => {
-        showNotification('¡Bienvenido a Esencia Masculina! 🛍️', 'success');
+        showNotification('¡Bienvenido a Esencia Masculina!', 'success');
     }, 1000);
+    
+    // Log de versión
+    console.log('%c Esencia Masculina v2.0 ', 
+        'background: linear-gradient(135deg, #D4AF37, #C0C0C0); color: #000; font-size: 16px; font-weight: bold; padding: 10px 20px; border-radius: 5px;'
+    );
 });
