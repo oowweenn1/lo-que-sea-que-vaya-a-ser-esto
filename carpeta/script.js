@@ -397,14 +397,171 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // ===== INICIALIZACIÓN =====
+    // ===== SORTING FOR CATEGORY PAGES =====
+    function initCategorySorter() {
+        const sortSelect = document.querySelector('.sort-select');
+        const grid = document.querySelector('.perfumes-grid, .small-perfumes-grid');
+        if (!sortSelect || !grid) return;
+
+        function sortGrid(mode) {
+            const cards = Array.from(grid.querySelectorAll('.perfume-card'));
+            if (!cards.length) return;
+
+            const collator = new Intl.Collator('es', { sensitivity: 'base' });
+
+            cards.sort((a, b) => {
+                const nameA = (a.dataset.name || '').trim();
+                const nameB = (b.dataset.name || '').trim();
+                const priceA = parseFloat(a.dataset.price || '0');
+                const priceB = parseFloat(b.dataset.price || '0');
+
+                switch (mode) {
+                    case 'name-asc':
+                        return collator.compare(nameA, nameB);
+                    case 'name-desc':
+                        return collator.compare(nameB, nameA);
+                    case 'price-asc':
+                        return priceA - priceB;
+                    case 'price-desc':
+                        return priceB - priceA;
+                    default:
+                        return 0;
+                }
+            });
+
+            // Re-append in sorted order
+            cards.forEach(c => grid.appendChild(c));
+        }
+
+        // Initialize with current value
+        sortSelect.addEventListener('change', function() {
+            sortGrid(this.value);
+        });
+
+        // Optionally trigger initial sort if a default is selected
+        if (sortSelect.value) sortGrid(sortSelect.value);
+    }
+
+    // Run category sorter if there's a sort control on the page
+    initCategorySorter();
+
+    // ===== BRAND FILTER (LEFT SIDEBAR) =====
+    function initBrandFilter() {
+        const grid = document.querySelector('.perfumes-grid, .small-perfumes-grid');
+        if (!grid) return;
+
+        const section = grid.closest('.section') || document.querySelector('.section');
+        if (!section) return;
+
+        // Avoid inserting multiple sidebars
+        if (section.querySelector('.brand-sidebar')) return;
+
+        const cards = Array.from(grid.querySelectorAll('.perfume-card'));
+        if (!cards.length) return;
+
+        // Collect brands from data-brand or from .perfume-brand element
+        const brandSet = new Set();
+        cards.forEach(c => {
+            const b = (c.dataset.brand || '').trim() || (c.querySelector('.perfume-brand') ? c.querySelector('.perfume-brand').textContent.trim() : '');
+            if (b) brandSet.add(b);
+        });
+
+        if (!brandSet.size) return;
+
+        const sidebar = document.createElement('aside');
+        sidebar.className = 'brand-sidebar';
+
+        const title = document.createElement('h4');
+        title.textContent = 'Filtrar por marca';
+        sidebar.appendChild(title);
+
+        const form = document.createElement('div');
+        form.className = 'brand-filter';
+
+        // 'All' option
+        const allLabel = document.createElement('label');
+        const allCheckbox = document.createElement('input');
+        allCheckbox.type = 'checkbox';
+        allCheckbox.checked = true;
+        allCheckbox.dataset.brand = 'ALL';
+        allLabel.appendChild(allCheckbox);
+        allLabel.appendChild(document.createTextNode('Todas'));
+        form.appendChild(allLabel);
+
+        // Create checkbox for each brand
+        Array.from(brandSet).sort().forEach(brand => {
+            const label = document.createElement('label');
+            const input = document.createElement('input');
+            input.type = 'checkbox';
+            input.value = brand;
+            input.dataset.brand = brand;
+            label.appendChild(input);
+            label.appendChild(document.createTextNode(brand));
+            form.appendChild(label);
+        });
+
+        sidebar.appendChild(form);
+
+        // Wrap grid and sidebar
+        const wrapper = document.createElement('div');
+        wrapper.className = 'category-grid-with-sidebar';
+
+        // Move grid into wrapper
+        grid.parentNode.insertBefore(wrapper, grid);
+        wrapper.appendChild(sidebar);
+        wrapper.appendChild(grid);
+
+        // Filtering logic
+        function applyFilter() {
+            const checked = Array.from(form.querySelectorAll('input[type="checkbox"]:not([data-brand="ALL"])')).filter(i => i.checked).map(i => i.value);
+
+            const allChecked = form.querySelector('input[data-brand="ALL"]').checked;
+
+            cards.forEach(card => {
+                const brand = (card.dataset.brand || (card.querySelector('.perfume-brand') ? card.querySelector('.perfume-brand').textContent.trim() : '') || '').trim();
+                const matches = allChecked || checked.length === 0 || checked.includes(brand);
+                if (matches) {
+                    card.classList.remove('perfume-hidden');
+                } else {
+                    card.classList.add('perfume-hidden');
+                }
+            });
+        }
+
+        // Event handlers
+        form.addEventListener('change', (e) => {
+            const target = e.target;
+            if (target && target.dataset && target.dataset.brand === 'ALL') {
+                // If 'All' clicked, toggle others
+                const checked = target.checked;
+                form.querySelectorAll('input[type="checkbox"]').forEach(inp => {
+                    if (inp.dataset.brand !== 'ALL') inp.checked = false;
+                });
+            } else {
+                // If any specific brand is checked, uncheck 'All'
+                const anyChecked = Array.from(form.querySelectorAll('input[type="checkbox"]:not([data-brand="ALL"])')).some(i => i.checked);
+                form.querySelector('input[data-brand="ALL"]').checked = !anyChecked;
+            }
+
+            applyFilter();
+        });
+
+        // Initial apply
+        applyFilter();
+    }
+
+    // Run brand filter initializer
+    initBrandFilter();
+
+    // ===== INICIALIZACIÓN =====
     console.log('👔 Esencia Masculina cargado exitosamente!');
     console.log('💡 Tip: Escribe "perfume" para activar el easter egg');
-    
+
     // Notificación de bienvenida
     setTimeout(() => {
         showNotification('¡Bienvenido a Esencia Masculina!', 'success');
     }, 1000);
-    
+
     // Log de versión
     console.log('%c Esencia Masculina v2.0 ', 
         'background: linear-gradient(135deg, #D4AF37, #C0C0C0); color: #000; font-size: 16px; font-weight: bold; padding: 10px 20px; border-radius: 5px;'

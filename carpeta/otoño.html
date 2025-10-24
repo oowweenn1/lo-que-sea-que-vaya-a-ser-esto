@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Otoño — Esencia Masculina</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="header">
+    <nav class="nav-container">
+      <a href="index.html" class="logo">Esencia Masculina</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="section" id="otono">
+      <h1 class="section-title">Otoño</h1>
+      <p class="section-subtitle">Fragancias amaderadas y especiadas para la estación de transición.</p>
+
+      <div class="sort-bar" style="display:flex;justify-content:flex-end;gap:1rem;margin-bottom:1rem;">
+        <label for="sort" style="align-self:center;color:var(--text-muted);">Ordenar:</label>
+        <select id="sort" class="sort-select" style="padding:0.6rem 0.8rem;border-radius:10px;background:var(--bg-card);border:1px solid var(--border-light);color:var(--text-primary);">
+          <option value="name-asc">A → Z</option>
+          <option value="name-desc">Z → A</option>
+          <option value="price-asc">Precio ↑</option>
+          <option value="price-desc">Precio ↓</option>
+        </select>
+      </div>
+
+      <div class="small-perfumes-grid">
+        <div class="perfume-card small-perfume-card otonales" data-name="Amber Woods" data-price="85" data-brand="Fireside">
+          <div class="perfume-image"><div class="perfume-bottle">🌰</div></div>
+          <div class="perfume-info">
+            <div class="perfume-name">Amber Woods</div>
+            <div class="perfume-price">$85</div>
+          </div>
+        </div>
+
+        <div class="perfume-card small-perfume-card otonales" data-name="Spice Route" data-price="72" data-brand="Nomad">
+          <div class="perfume-image"><div class="perfume-bottle">🧭</div></div>
+          <div class="perfume-info">
+            <div class="perfume-name">Spice Route</div>
+            <div class="perfume-price">$72</div>
+          </div>
+        </div>
+
+        <div class="perfume-card small-perfume-card otonales" data-name="Woodland Echo" data-price="95" data-brand="Arbor">
+          <div class="perfume-image"><div class="perfume-bottle">🌲</div></div>
+          <div class="perfume-info">
+            <div class="perfume-name">Woodland Echo</div>
+            <div class="perfume-price">$95</div>
+          </div>
+        </div>
+
+      </div>
+
+      <div style="text-align:center;margin-top:2rem;"><a href="index.html" class="category-btn btn-gold">Volver a categorías</a></div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

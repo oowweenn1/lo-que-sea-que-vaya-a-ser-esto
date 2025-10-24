@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Primavera — Esencia Masculina</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="header">
+    <nav class="nav-container">
+      <a href="index.html" class="logo">Esencia Masculina</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="section" id="primavera">
+      <h1 class="section-title">Primavera</h1>
+      <p class="section-subtitle">Fragancias florales y ligeras para renovar el día.</p>
+
+      <div class="sort-bar" style="display:flex;justify-content:flex-end;gap:1rem;margin-bottom:1rem;">
+        <label for="sort" style="align-self:center;color:var(--text-muted);">Ordenar:</label>
+        <select id="sort" class="sort-select" style="padding:0.6rem 0.8rem;border-radius:10px;background:var(--bg-card);border:1px solid var(--border-light);color:var(--text-primary);">
+          <option value="name-asc">A → Z</option>
+          <option value="name-desc">Z → A</option>
+          <option value="price-asc">Precio ↑</option>
+          <option value="price-desc">Precio ↓</option>
+        </select>
+      </div>
+
+      <div class="small-perfumes-grid">
+        <div class="perfume-card small-perfume-card primaverales" data-name="Blossom Air" data-price="65" data-brand="FloraCo">
+          <div class="perfume-image"><div class="perfume-bottle">🌼</div></div>
+          <div class="perfume-info">
+            <div class="perfume-name">Blossom Air</div>
+            <div class="perfume-price">$65</div>
+          </div>
+        </div>
+
+        <div class="perfume-card small-perfume-card primaverales" data-name="Morning Bloom" data-price="55" data-brand="DawnLabs">
+          <div class="perfume-image"><div class="perfume-bottle">🌸</div></div>
+          <div class="perfume-info">
+            <div class="perfume-name">Morning Bloom</div>
+            <div class="perfume-price">$55</div>
+          </div>
+        </div>
+
+        <div class="perfume-card small-perfume-card primaverales" data-name="Green Meadow" data-price="45" data-brand="GreenLine">
+          <div class="perfume-image"><div class="perfume-bottle">🌿</div></div>
+          <div class="perfume-info">
+            <div class="perfume-name">Green Meadow</div>
+            <div class="perfume-price">$45</div>
+          </div>
+        </div>
+
+      </div>
+
+      <div style="text-align:center;margin-top:2rem;"><a href="index.html" class="category-btn btn-gold">Volver a categorías</a></div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

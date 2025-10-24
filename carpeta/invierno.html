@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Invierno — Esencia Masculina</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="header">
+    <nav class="nav-container">
+      <a href="index.html" class="logo">Esencia Masculina</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="section" id="invierno">
+      <h1 class="section-title">Invierno</h1>
+      <p class="section-subtitle">Aromas intensos y cálidos para noches sofisticadas.</p>
+
+      <div class="sort-bar" style="display:flex;justify-content:flex-end;gap:1rem;margin-bottom:1rem;">
+        <label for="sort" style="align-self:center;color:var(--text-muted);">Ordenar:</label>
+        <select id="sort" class="sort-select" style="padding:0.6rem 0.8rem;border-radius:10px;background:var(--bg-card);border:1px solid var(--border-light);color:var(--text-primary);">
+          <option value="name-asc">A → Z</option>
+          <option value="name-desc">Z → A</option>
+          <option value="price-asc">Precio ↑</option>
+          <option value="price-desc">Precio ↓</option>
+        </select>
+      </div>
+
+      <div class="perfumes-grid">
+        <div class="perfume-card" data-name="Night Ember" data-price="89" data-brand="Noctis">
+          <div class="perfume-image"><div class="perfume-bottle">🔥</div></div>
+          <div class="perfume-info">
+            <div class="perfume-brand">Noctis</div>
+            <div class="perfume-name">Night Ember</div>
+            <div class="perfume-type">Eau de Parfum</div>
+            <p class="perfume-description">Acordes ahumados y resinosos que perduran.</p>
+            <div class="perfume-price">$89</div>
+            <button class="perfume-btn">Comprar</button>
+          </div>
+        </div>
+
+        <div class="perfume-card" data-name="Polar Mist" data-price="69" data-brand="Glacier">
+          <div class="perfume-image"><div class="perfume-bottle">❄️</div></div>
+          <div class="perfume-info">
+            <div class="perfume-brand">Glacier</div>
+            <div class="perfume-name">Polar Mist</div>
+            <div class="perfume-type">Eau de Toilette</div>
+            <p class="perfume-description">Frescor frío con toques aromáticos.</p>
+            <div class="perfume-price">$69</div>
+            <button class="perfume-btn">Comprar</button>
+          </div>
+        </div>
+
+        <div class="perfume-card" data-name="Coal & Smoke" data-price="99" data-brand="Hearth">
+          <div class="perfume-image"><div class="perfume-bottle">🪵</div></div>
+          <div class="perfume-info">
+            <div class="perfume-brand">Hearth</div>
+            <div class="perfume-name">Coal & Smoke</div>
+            <div class="perfume-type">Eau de Parfum</div>
+            <p class="perfume-description">Profundo, con base ahumada y ambarina.</p>
+            <div class="perfume-price">$99</div>
+            <button class="perfume-btn">Comprar</button>
+          </div>
+        </div>
+
+      </div>
+
+      <div style="text-align:center;margin-top:2rem;"><a href="index.html" class="category-btn btn-burgundy">Volver a categorías</a></div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

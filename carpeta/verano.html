@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Verano — Esencia Masculina</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="header">
+    <nav class="nav-container">
+      <a href="index.html" class="logo">Esencia Masculina</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="section" id="verano">
+      <h1 class="section-title">Verano</h1>
+      <p class="section-subtitle">Fragancias frescas y vibrantes para los días cálidos.</p>
+
+      <div class="sort-bar" style="display:flex;justify-content:flex-end;gap:1rem;margin-bottom:1rem;">
+        <label for="sort" style="align-self:center;color:var(--text-muted);">Ordenar:</label>
+        <select id="sort" class="sort-select" style="padding:0.6rem 0.8rem;border-radius:10px;background:var(--bg-card);border:1px solid var(--border-light);color:var(--text-primary);">
+          <option value="name-asc">A → Z</option>
+          <option value="name-desc">Z → A</option>
+          <option value="price-asc">Precio ↑</option>
+          <option value="price-desc">Precio ↓</option>
+        </select>
+      </div>
+
+      <div class="small-perfumes-grid">
+        <div class="perfume-card small-perfume-card veraniegas" data-name="Citrus Breeze" data-price="59" data-brand="SunCo">
+          <div class="perfume-image"><div class="perfume-bottle">🍋</div></div>
+          <div class="perfume-info">
+            <div class="perfume-name">Citrus Breeze</div>
+            <div class="perfume-price">$59</div>
+          </div>
+        </div>
+
+        <div class="perfume-card small-perfume-card veraniegas" data-name="Ocean Mist" data-price="49" data-brand="MarineLab">
+          <div class="perfume-image"><div class="perfume-bottle">🌊</div></div>
+          <div class="perfume-info">
+            <div class="perfume-name">Ocean Mist</div>
+            <div class="perfume-price">$49</div>
+          </div>
+        </div>
+
+        <div class="perfume-card small-perfume-card veraniegas" data-name="Tropical Dawn" data-price="69" data-brand="Tropica">
+          <div class="perfume-image"><div class="perfume-bottle">🌺</div></div>
+          <div class="perfume-info">
+            <div class="perfume-name">Tropical Dawn</div>
+            <div class="perfume-price">$69</div>
+          </div>
+        </div>
+
+      </div>
+
+      <div style="text-align:center;margin-top:2rem;"><a href="index.html" class="category-btn btn-burgundy">Volver a categorías</a></div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
