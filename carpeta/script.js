@@ -65,14 +65,13 @@ document.addEventListener('DOMContentLoaded', function() {
         card.addEventListener('click', function(e) {
             // Si el click fue en el botón, no hacer nada (el botón tiene su propio handler)
             if (e.target.classList.contains('category-btn')) return;
-            
+
             const categoryName = this.querySelector('h3').textContent;
-            
-            // Animación de click
+
+            // Animación de click (solo animación, NOTIFICACIÓN se muestra al presionar el botón)
             this.style.transform = 'translateY(-10px) scale(0.98)';
             setTimeout(() => {
                 this.style.transform = '';
-                showNotification(` Explorando fragancias ${categoryName.toLowerCase()}`, 'success');
             }, 200);
         });
 
@@ -93,8 +92,33 @@ document.addEventListener('DOMContentLoaded', function() {
             e.stopPropagation();
             const card = this.closest('.fragrance-category-card');
             const categoryName = card.querySelector('h3').textContent;
-            
-            showNotification(` Cargando colección ${categoryName}...`, 'info');
+
+            // Mostrar notificación indicando carga y luego redirigir a la página de la categoría.
+            showNotification(`Cargando colección ${categoryName}...`, 'info');
+
+            // Mapear el data-category a un archivo existente en la carpeta
+            const mapping = {
+                veraniegas: 'verano.html',
+                otonales: 'otono.html',
+                invernales: 'invierno.html',
+                primaverales: 'primavera.html',
+                // soportar antiguas clases/variantes por si acaso
+                verano: 'verano.html',
+                otono: 'otono.html',
+                invierno: 'invierno.html',
+                primavera: 'primavera.html'
+            };
+
+            const key = card.dataset.category || card.className.split(' ').find(c => mapping[c]);
+            const target = mapping[key] || mapping[card.className.split(' ').find(c => mapping[c])] || 'index.html';
+
+            // Pequeña espera para que el usuario vea la notificación antes de navegar.
+            // Por defecto 500ms (medio segundo). Se puede ajustar por botón usando
+            // un atributo `data-delay="1000"` (ms) si quieres 1s u otro valor.
+            const delay = parseInt(this.dataset.delay, 10) || 500;
+            setTimeout(() => {
+                window.location.href = target;
+            }, delay);
         });
     });
 
