@@ -3,102 +3,268 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Verano — Esencia Masculina</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <meta name="description" content="Fragancias frescas y vibrantes para el verano. Descubre aromas cítricos y acuáticos perfectos para días cálidos.">
+  <title>Verano – Esencia Masculina</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header class="header">
     <nav class="nav-container">
-      <a href="index.html" class="logo">Esencia Masculina</a>
+      <a href="index.html" class="logo">
+        <span class="logo-icon">🧴</span>
+        Esencia Masculina
+      </a>
+      <button class="hamburger" aria-label="Menú" aria-expanded="false">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
     </nav>
+    <div class="mobile-menu">
+      <ul class="mobile-menu-list">
+        <li><a href="index.html" class="mobile-menu-link">Inicio</a></li>
+        <li><a href="index.html#categorias" class="mobile-menu-link">Categorías</a></li>
+      </ul>
+    </div>
   </header>
 
   <main class="container">
     <section class="section" id="verano">
+      <div class="breadcrumb">
+        <a href="index.html">Colecciones</a> / <span>Verano</span>
+      </div>
       <h1 class="section-title">Verano</h1>
-      <p class="section-subtitle">Fragancias frescas y vibrantes para los días cálidos.</p>
+      <p class="section-subtitle">Fragancias frescas y vibrantes con notas cítricas y acuáticas. Perfectas para días cálidos y noches junto al mar.</p>
 
-      <div class="category-grid-with-sidebar">
-        <aside class="brand-sidebar">
-          <h4>Filtrar por marca</h4>
-          <div class="brand-filter">
-            <label><input type="checkbox" data-brand="ALL" checked> Todas</label>
-            <label><input type="checkbox" data-brand="SunCo"> SunCo (3)</label>
-            <label><input type="checkbox" data-brand="MarineLab"> MarineLab (3)</label>
-            <label><input type="checkbox" data-brand="Tropica"> Tropica (4)</label>
+      <div class="sort-bar">
+        <label for="sort">Ordenar:</label>
+        <select id="sort" class="sort-select">
+          <option value="name-asc">A → Z</option>
+          <option value="name-desc">Z → A</option>
+          <option value="price-asc">Precio: Menor a Mayor</option>
+          <option value="price-desc">Precio: Mayor a Menor</option>
+        </select>
+      </div>
+
+      <div class="small-perfumes-grid">
+        <div class="perfume-card small-perfume-card veraniegas" 
+             data-name="Acqua di Giò" 
+             data-price="89" 
+             data-brand="Giorgio Armani" 
+             data-desc="Icónico aroma marino con notas de bergamota, neroli y musgo. Fresco y masculino, perfecto para el verano."
+             data-image="https://via.placeholder.com/300x400?text=Acqua+di+Gio">
+          <div class="perfume-image">
+            <img src="https://via.placeholder.com/300x400?text=Acqua+di+Gio" alt="Acqua di Giò" class="perfume-img">
           </div>
-        </aside>
-
-        <div>
-          <div class="sort-bar" style="display:flex;justify-content:flex-end;gap:1rem;margin-bottom:1rem;">
-            <label for="sort" style="align-self:center;color:var(--text-muted);">Ordenar:</label>
-            <select id="sort" class="sort-select" style="padding:0.6rem 0.8rem;border-radius:10px;background:var(--bg-card);border:1px solid var(--border-light);color:var(--text-primary);">
-              <option value="name-asc">A → Z</option>
-              <option value="name-desc">Z → A</option>
-              <option value="price-asc">Precio ↑</option>
-              <option value="price-desc">Precio ↓</option>
-            </select>
+          <div class="perfume-info">
+            <div class="perfume-name">Acqua di Giò</div>
+            <div class="perfume-brand">Giorgio Armani</div>
+            <div class="perfume-price">$89</div>
           </div>
+        </div>
 
-          <div class="small-perfumes-grid">
-            <div class="perfume-card small-perfume-card veraniegas" data-name="Citrus Breeze" data-price="59" data-brand="SunCo" data-desc="Frescura cítrica con notas de limón y bergamota, ideal para el día a día.">
-              <div class="perfume-image"><div class="perfume-bottle">🍋</div></div>
-              <div class="perfume-info"><div class="perfume-name">Citrus Breeze</div><div class="perfume-price">$59</div></div>
-            </div>
+        <div class="perfume-card small-perfume-card veraniegas" 
+             data-name="Light Blue Pour Homme" 
+             data-price="82" 
+             data-brand="Dolce & Gabbana" 
+             data-desc="Cítrico mediterráneo con bergamota siciliana, enebro y almizcle. Ligero y seductor."
+             data-image="https://via.placeholder.com/300x400?text=Light+Blue">
+          <div class="perfume-image">
+            <img src="https://via.placeholder.com/300x400?text=Light+Blue" alt="Light Blue Pour Homme" class="perfume-img">
+          </div>
+          <div class="perfume-info">
+            <div class="perfume-name">Light Blue Pour Homme</div>
+            <div class="perfume-brand">Dolce & Gabbana</div>
+            <div class="perfume-price">$82</div>
+          </div>
+        </div>
 
-            <div class="perfume-card small-perfume-card veraniegas" data-name="Sunny Twist" data-price="62" data-brand="SunCo" data-desc="Aroma afrutado y brillante con notas de naranja y jazmín ligero.">
-              <div class="perfume-image"><div class="perfume-bottle">🍊</div></div>
-              <div class="perfume-info"><div class="perfume-name">Sunny Twist</div><div class="perfume-price">$62</div></div>
-            </div>
+        <div class="perfume-card small-perfume-card veraniegas" 
+             data-name="Versace Man Eau Fraîche" 
+             data-price="75" 
+             data-brand="Versace" 
+             data-desc="Fresco acuático con limón, romero y cedro. Elegante y versátil para días cálidos."
+             data-image="https://via.placeholder.com/300x400?text=Versace+Man">
+          <div class="perfume-image">
+            <img src="https://via.placeholder.com/300x400?text=Versace+Man" alt="Versace Man Eau Fraîche" class="perfume-img">
+          </div>
+          <div class="perfume-info">
+            <div class="perfume-name">Versace Man Eau Fraîche</div>
+            <div class="perfume-brand">Versace</div>
+            <div class="perfume-price">$75</div>
+          </div>
+        </div>
 
-            <div class="perfume-card small-perfume-card veraniegas" data-name="Sea Whisper" data-price="52" data-brand="MarineLab" data-desc="Brisa marina y ozónica con un corazón fresco y ligero, perfecto para verano.">
-              <div class="perfume-image"><div class="perfume-bottle">🌊</div></div>
-              <div class="perfume-info"><div class="perfume-name">Sea Whisper</div><div class="perfume-price">$52</div></div>
-            </div>
+        <div class="perfume-card small-perfume-card veraniegas" 
+             data-name="Sauvage Eau de Toilette" 
+             data-price="95" 
+             data-brand="Dior" 
+             data-desc="Salvaje y fresco con bergamota calabresa, pimienta y ambroxan. Poderoso y magnético."
+             data-image="https://via.placeholder.com/300x400?text=Sauvage">
+          <div class="perfume-image">
+            <img src="https://via.placeholder.com/300x400?text=Sauvage" alt="Sauvage Eau de Toilette" class="perfume-img">
+          </div>
+          <div class="perfume-info">
+            <div class="perfume-name">Sauvage Eau de Toilette</div>
+            <div class="perfume-brand">Dior</div>
+            <div class="perfume-price">$95</div>
+          </div>
+        </div>
 
-            <div class="perfume-card small-perfume-card veraniegas" data-name="Coconut Zest" data-price="58" data-brand="Tropica" data-desc="Notas cremosas de coco y toques tropicales, suave y veraniego.">
-              <div class="perfume-image"><div class="perfume-bottle">🥥</div></div>
-              <div class="perfume-info"><div class="perfume-name">Coconut Zest</div><div class="perfume-price">$58</div></div>
-            </div>
+        <div class="perfume-card small-perfume-card veraniegas" 
+             data-name="Colonia" 
+             data-price="125" 
+             data-brand="Acqua di Parma" 
+             data-desc="Clásico italiano con cítricos sicilianos y lavanda. Sofisticación atemporal y elegancia pura."
+             data-image="https://via.placeholder.com/300x400?text=Colonia">
+          <div class="perfume-image">
+            <img src="https://via.placeholder.com/300x400?text=Colonia" alt="Colonia" class="perfume-img">
+          </div>
+          <div class="perfume-info">
+            <div class="perfume-name">Colonia</div>
+            <div class="perfume-brand">Acqua di Parma</div>
+            <div class="perfume-price">$125</div>
+          </div>
+        </div>
 
-            <div class="perfume-card small-perfume-card veraniegas" data-name="Lime Crush" data-price="47" data-brand="SunCo" data-desc="Explosión cítrica de lima y verbena, ligero y refrescante.">
-              <div class="perfume-image"><div class="perfume-bottle">🍈</div></div>
-              <div class="perfume-info"><div class="perfume-name">Lime Crush</div><div class="perfume-price">$47</div></div>
-            </div>
+        <div class="perfume-card small-perfume-card veraniegas" 
+             data-name="L'Homme Cologne Bleue" 
+             data-price="88" 
+             data-brand="Prada" 
+             data-desc="Aromático fresco con notas de bergamota, neroli y ámbar. Refinado y moderno."
+             data-image="https://via.placeholder.com/300x400?text=Prada">
+          <div class="perfume-image">
+            <img src="https://via.placeholder.com/300x400?text=Prada" alt="L'Homme Cologne Bleue" class="perfume-img">
+          </div>
+          <div class="perfume-info">
+            <div class="perfume-name">L'Homme Cologne Bleue</div>
+            <div class="perfume-brand">Prada</div>
+            <div class="perfume-price">$88</div>
+          </div>
+        </div>
 
-            <div class="perfume-card small-perfume-card veraniegas" data-name="Coral Bloom" data-price="71" data-brand="Tropica" data-desc="Flor tropical con toques afrutados y un fondo dulce y elegante.">
-              <div class="perfume-image"><div class="perfume-bottle">🌺</div></div>
-              <div class="perfume-info"><div class="perfume-name">Coral Bloom</div><div class="perfume-price">$71</div></div>
-            </div>
+        <div class="perfume-card small-perfume-card veraniegas" 
+             data-name="Terre d'Hermès Eau Très Fraîche" 
+             data-price="105" 
+             data-brand="Hermès" 
+             data-desc="Terroso y cítrico con naranja, geranio y pachulí. Fresco y vibrante para el verano."
+             data-image="https://via.placeholder.com/300x400?text=Hermes">
+          <div class="perfume-image">
+            <img src="https://via.placeholder.com/300x400?text=Hermes" alt="Terre d'Hermès" class="perfume-img">
+          </div>
+          <div class="perfume-info">
+            <div class="perfume-name">Terre d'Hermès Eau Très Fraîche</div>
+            <div class="perfume-brand">Hermès</div>
+            <div class="perfume-price">$105</div>
+          </div>
+        </div>
 
-            <div class="perfume-card small-perfume-card veraniegas" data-name="Ocean Mist" data-price="49" data-brand="MarineLab" data-desc="Aroma fresco oceánico con notas salinas y acordes acuáticos suaves.">
-              <div class="perfume-image"><div class="perfume-bottle">🌊</div></div>
-              <div class="perfume-info"><div class="perfume-name">Ocean Mist</div><div class="perfume-price">$49</div></div>
-            </div>
+        <div class="perfume-card small-perfume-card veraniegas" 
+             data-name="L'Eau d'Issey Pour Homme" 
+             data-price="72" 
+             data-brand="Issey Miyake" 
+             data-desc="Acuático con yuzu, nuez moscada y sándalo. Minimalista y refrescante."
+             data-image="https://via.placeholder.com/300x400?text=Issey">
+          <div class="perfume-image">
+            <img src="https://via.placeholder.com/300x400?text=Issey" alt="L'Eau d'Issey" class="perfume-img">
+          </div>
+          <div class="perfume-info">
+            <div class="perfume-name">L'Eau d'Issey Pour Homme</div>
+            <div class="perfume-brand">Issey Miyake</div>
+            <div class="perfume-price">$72</div>
+          </div>
+        </div>
 
-            <div class="perfume-card small-perfume-card veraniegas" data-name="Tropical Dawn" data-price="69" data-brand="Tropica" data-desc="Combinación de frutas exóticas y flores para un inicio de día energético.">
-              <div class="perfume-image"><div class="perfume-bottle">🌺</div></div>
-              <div class="perfume-info"><div class="perfume-name">Tropical Dawn</div><div class="perfume-price">$69</div></div>
-            </div>
+        <div class="perfume-card small-perfume-card veraniegas" 
+             data-name="Dior Homme Cologne" 
+             data-price="92" 
+             data-brand="Dior" 
+             data-desc="Cítrico floral con bergamota de Calabria, flor de naranja y almizcle blanco. Fresco y sofisticado."
+             data-image="https://via.placeholder.com/300x400?text=Dior+Cologne">
+          <div class="perfume-image">
+            <img src="https://via.placeholder.com/300x400?text=Dior+Cologne" alt="Dior Homme Cologne" class="perfume-img">
+          </div>
+          <div class="perfume-info">
+            <div class="perfume-name">Dior Homme Cologne</div>
+            <div class="perfume-brand">Dior</div>
+            <div class="perfume-price">$92</div>
+          </div>
+        </div>
 
-            <div class="perfume-card small-perfume-card veraniegas" data-name="Beach Glass" data-price="55" data-brand="MarineLab" data-desc="Limpio y mineral, recuerda a una tarde en la playa con brisa salina.">
-              <div class="perfume-image"><div class="perfume-bottle">🪸</div></div>
-              <div class="perfume-info"><div class="perfume-name">Beach Glass</div><div class="perfume-price">$55</div></div>
-            </div>
-
-            <div class="perfume-card small-perfume-card veraniegas" data-name="Mango Rush" data-price="64" data-brand="Tropica" data-desc="Dulce y jugoso: mango y notas tropicales, llamativo y veraniego.">
-              <div class="perfume-image"><div class="perfume-bottle">🥭</div></div>
-              <div class="perfume-info"><div class="perfume-name">Mango Rush</div><div class="perfume-price">$64</div></div>
-            </div>
-
+        <div class="perfume-card small-perfume-card veraniegas" 
+             data-name="K by Dolce & Gabbana" 
+             data-price="85" 
+             data-brand="Dolce & Gabbana" 
+             data-desc="Aromático especiado con limón siciliano, lavanda y vetiver. Fresco y viril."
+             data-image="https://via.placeholder.com/300x400?text=K+by+DG">
+          <div class="perfume-image">
+            <img src="https://via.placeholder.com/300x400?text=K+by+DG" alt="K by Dolce & Gabbana" class="perfume-img">
+          </div>
+          <div class="perfume-info">
+            <div class="perfume-name">K by Dolce & Gabbana</div>
+            <div class="perfume-brand">Dolce & Gabbana</div>
+            <div class="perfume-price">$85</div>
           </div>
         </div>
       </div>
 
-      <div style="text-align:center;margin-top:2rem;"><a href="index.html" class="category-btn btn-burgundy">Volver a categorías</a></div>
+      <div class="back-link">
+        <a href="index.html" class="category-btn btn-gold">← Volver a Colecciones</a>
+      </div>
     </section>
   </main>
+
+  <!-- MODAL DE PERFUME -->
+  <div id="perfume-modal" class="perfume-modal">
+    <div class="modal-content">
+      <button class="modal-close" aria-label="Cerrar">&times;</button>
+      
+      <div class="modal-grid">
+        <div class="modal-image-container">
+          <img id="modal-image" src="" alt="" class="modal-image">
+        </div>
+        
+        <div class="modal-info">
+          <h2 id="modal-name" class="modal-name"></h2>
+          <p id="modal-brand" class="modal-brand"></p>
+          <div class="modal-rating">
+            <span class="stars">★★★★★</span>
+            <span class="rating-text">(127 reseñas)</span>
+          </div>
+          
+          <div class="modal-price-section">
+            <span id="modal-price" class="modal-price"></span>
+          </div>
+          
+          <p id="modal-desc" class="modal-description"></p>
+          
+          <div class="modal-details">
+            <div class="detail-item">
+              <strong>Tipo:</strong> Eau de Toilette
+            </div>
+            <div class="detail-item">
+              <strong>Volumen:</strong> 100ml
+            </div>
+            <div class="detail-item">
+              <strong>Durabilidad:</strong> 8-10 horas
+            </div>
+          </div>
+
+          <div class="modal-actions">
+            <button class="btn-add-cart">Agregar al Carrito</button>
+            <button class="btn-favorite">❤️ Favorito</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-content container">
+      <p>&copy; 2025 Esencia Masculina. Todos los derechos reservados.</p>
+    </div>
+  </footer>
 
   <script src="script.js"></script>
 </body>

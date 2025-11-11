@@ -3,102 +3,205 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Primavera — Esencia Masculina</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <meta name="description" content="Fragancias florales y ligeras para la primavera. Descubre aromas frescos con notas florales y herbales.">
+  <title>Primavera – Esencia Masculina</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header class="header">
     <nav class="nav-container">
-      <a href="index.html" class="logo">Esencia Masculina</a>
+      <a href="index.html" class="logo">
+        <span class="logo-icon">🧴</span>
+        Esencia Masculina
+      </a>
+      <button class="hamburger" aria-label="Menú" aria-expanded="false">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
     </nav>
+    <div class="mobile-menu">
+      <ul class="mobile-menu-list">
+        <li><a href="index.html" class="mobile-menu-link">Inicio</a></li>
+        <li><a href="index.html#categorias" class="mobile-menu-link">Categorías</a></li>
+      </ul>
+    </div>
   </header>
 
   <main class="container">
     <section class="section" id="primavera">
+      <div class="breadcrumb">
+        <a href="index.html">Colecciones</a> / <span>Primavera</span>
+      </div>
+
       <h1 class="section-title">Primavera</h1>
-      <p class="section-subtitle">Fragancias florales y ligeras para renovar el día.</p>
+      <p class="section-subtitle">Fragancias florales y ligeras para renovar el día. Aromas frescos con notas florales, herbales y cítricos suaves.</p>
 
-      <div class="category-grid-with-sidebar">
-        <aside class="brand-sidebar">
-          <h4>Filtrar por marca</h4>
-          <div class="brand-filter">
-            <label><input type="checkbox" data-brand="ALL" checked> Todas</label>
-            <label><input type="checkbox" data-brand="FloraCo"> FloraCo (3)</label>
-            <label><input type="checkbox" data-brand="DawnLabs"> DawnLabs (3)</label>
-            <label><input type="checkbox" data-brand="GreenLine"> GreenLine (4)</label>
+      <div class="sort-bar">
+        <label for="sort">Ordenar:</label>
+        <select id="sort" class="sort-select">
+          <option value="name-asc">A → Z</option>
+          <option value="name-desc">Z → A</option>
+          <option value="price-asc">Precio: Menor a Mayor</option>
+          <option value="price-desc">Precio: Mayor a Menor</option>
+        </select>
+      </div>
+
+      <div class="small-perfumes-grid">
+        <div class="perfume-card small-perfume-card primaverales" 
+             data-name="Allure Homme Sport" 
+             data-price="118" 
+             data-brand="Chanel" 
+             data-desc="Fresco deportivo con mandarina, neroli, cedro y pimienta blanca. Dinámico y elegante."
+             data-image="https://via.placeholder.com/300x400?text=Allure+Sport">
+          <div class="perfume-image">
+            <img src="https://via.placeholder.com/300x400?text=Allure+Sport" alt="Allure Homme Sport" class="perfume-img">
           </div>
-        </aside>
-
-        <div>
-          <div class="sort-bar" style="display:flex;justify-content:flex-end;gap:1rem;margin-bottom:1rem;">
-            <label for="sort" style="align-self:center;color:var(--text-muted);">Ordenar:</label>
-            <select id="sort" class="sort-select" style="padding:0.6rem 0.8rem;border-radius:10px;background:var(--bg-card);border:1px solid var(--border-light);color:var(--text-primary);">
-              <option value="name-asc">A → Z</option>
-              <option value="name-desc">Z → A</option>
-              <option value="price-asc">Precio ↑</option>
-              <option value="price-desc">Precio ↓</option>
-            </select>
+          <div class="perfume-info">
+            <div class="perfume-name">Allure Homme Sport</div>
+            <div class="perfume-brand">Chanel</div>
+            <div class="perfume-price">$118</div>
           </div>
+        </div>
 
-          <div class="small-perfumes-grid">
-            <div class="perfume-card small-perfume-card primaverales" data-name="Blossom Air" data-price="65" data-brand="FloraCo" data-desc="Florales suaves con un corazón de pétalos y un acabado limpio.">
-              <div class="perfume-image"><div class="perfume-bottle">🌼</div></div>
-              <div class="perfume-info"><div class="perfume-name">Blossom Air</div><div class="perfume-price">$65</div></div>
-            </div>
+        <div class="perfume-card small-perfume-card primaverales" 
+             data-name="Un Jardin sur le Toit" 
+             data-price="135" 
+             data-brand="Hermès" 
+             data-desc="Verde herbal con manzana, pera, rosa y hierba. Fresco jardín en la azotea parisina."
+             data-image="https://via.placeholder.com/300x400?text=Un+Jardin">
+          <div class="perfume-image">
+            <img src="https://via.placeholder.com/300x400?text=Un+Jardin" alt="Un Jardin sur le Toit" class="perfume-img">
+          </div>
+          <div class="perfume-info">
+            <div class="perfume-name">Un Jardin sur le Toit</div>
+            <div class="perfume-brand">Hermès</div>
+            <div class="perfume-price">$135</div>
+          </div>
+        </div>
 
-            <div class="perfume-card small-perfume-card primaverales" data-name="Petal Mist" data-price="58" data-brand="FloraCo" data-desc="Ligera bruma floral con notas de peonía y almizcle ligero.">
-              <div class="perfume-image"><div class="perfume-bottle">💮</div></div>
-              <div class="perfume-info"><div class="perfume-name">Petal Mist</div><div class="perfume-price">$58</div></div>
-            </div>
+        <div class="perfume-card small-perfume-card primaverales" 
+             data-name="Acqua di Parma Blu Mediterraneo" 
+             data-price="142" 
+             data-brand="Acqua di Parma" 
+             data-desc="Cítrico floral con siciliana, jazmín y sándalo. Mediterráneo y refrescante."
+             data-image="https://via.placeholder.com/300x400?text=Blu+Mediterraneo">
+          <div class="perfume-image">
+            <img src="https://via.placeholder.com/300x400?text=Blu+Mediterraneo" alt="Blu Mediterraneo" class="perfume-img">
+          </div>
+          <div class="perfume-info">
+            <div class="perfume-name">Blu Mediterraneo</div>
+            <div class="perfume-brand">Acqua di Parma</div>
+            <div class="perfume-price">$142</div>
+          </div>
+        </div>
 
-            <div class="perfume-card small-perfume-card primaverales" data-name="Dew Kiss" data-price="49" data-brand="DawnLabs" data-desc="Fresco y húmedo, con ligeras notas verdes y un final delicado.">
-              <div class="perfume-image"><div class="perfume-bottle">💧</div></div>
-              <div class="perfume-info"><div class="perfume-name">Dew Kiss</div><div class="perfume-price">$49</div></div>
-            </div>
+        <div class="perfume-card small-perfume-card primaverales" 
+             data-name="Heeley Sel Marin" 
+             data-price="145" 
+             data-brand="Heeley" 
+             data-desc="Ámbar fresco con sal marina y flor de azahar. Ligero y sofisticado."
+             data-image="https://via.placeholder.com/300x400?text=Sel+Marin+Spring">
+          <div class="perfume-image">
+            <img src="https://via.placeholder.com/300x400?text=Sel+Marin+Spring" alt="Sel Marin" class="perfume-img">
+          </div>
+          <div class="perfume-info">
+            <div class="perfume-name">Heeley Sel Marin</div>
+            <div class="perfume-brand">Heeley</div>
+            <div class="perfume-price">$145</div>
+          </div>
+        </div>
 
-            <div class="perfume-card small-perfume-card primaverales" data-name="Meadow Walk" data-price="46" data-brand="GreenLine" data-desc="Herbal y floral, recuerda un paseo por praderas en flor.">
-              <div class="perfume-image"><div class="perfume-bottle">🍃</div></div>
-              <div class="perfume-info"><div class="perfume-name">Meadow Walk</div><div class="perfume-price">$46</div></div>
-            </div>
+        <div class="perfume-card small-perfume-card primaverales" 
+             data-name="L'Homme Ultime" 
+             data-price="98" 
+             data-brand="Prada" 
+             data-desc="Floral y aromático con néroli, jazmín y iris. Delicado y refinado."
+             data-image="https://via.placeholder.com/300x400?text=L+Homme+Ultime">
+          <div class="perfume-image">
+            <img src="https://via.placeholder.com/300x400?text=L+Homme+Ultime" alt="L'Homme Ultime" class="perfume-img">
+          </div>
+          <div class="perfume-info">
+            <div class="perfume-name">L'Homme Ultime</div>
+            <div class="perfume-brand">Prada</div>
+            <div class="perfume-price">$98</div>
+          </div>
+        </div>
 
-            <div class="perfume-card small-perfume-card primaverales" data-name="Sunrise Bloom" data-price="63" data-brand="DawnLabs" data-desc="Notas cítricas y florales que despiertan los sentidos al amanecer.">
-              <div class="perfume-image"><div class="perfume-bottle">🌅</div></div>
-              <div class="perfume-info"><div class="perfume-name">Sunrise Bloom</div><div class="perfume-price">$63</div></div>
-            </div>
-
-            <div class="perfume-card small-perfume-card primaverales" data-name="Herb Garden" data-price="44" data-brand="GreenLine" data-desc="Aromas herbales y verdes con toque limpio, ideal para uso diario.">
-              <div class="perfume-image"><div class="perfume-bottle">🌿</div></div>
-              <div class="perfume-info"><div class="perfume-name">Herb Garden</div><div class="perfume-price">$44</div></div>
-            </div>
-
-            <div class="perfume-card small-perfume-card primaverales" data-name="Morning Bloom" data-price="55" data-brand="DawnLabs" data-desc="Floral luminoso con acordes de rosa y neroli, fresco y elegante.">
-              <div class="perfume-image"><div class="perfume-bottle">🌸</div></div>
-              <div class="perfume-info"><div class="perfume-name">Morning Bloom</div><div class="perfume-price">$55</div></div>
-            </div>
-
-            <div class="perfume-card small-perfume-card primaverales" data-name="Green Meadow" data-price="45" data-brand="GreenLine" data-desc="Verde y crujiente, con matices de hierba recién cortada.">
-              <div class="perfume-image"><div class="perfume-bottle">🌿</div></div>
-              <div class="perfume-info"><div class="perfume-name">Green Meadow</div><div class="perfume-price">$45</div></div>
-            </div>
-
-            <div class="perfume-card small-perfume-card primaverales" data-name="Floral Mist" data-price="60" data-brand="FloraCo" data-desc="Mezcla floral pura con un acabado suave, ideal para eventos diurnos.">
-              <div class="perfume-image"><div class="perfume-bottle">�</div></div>
-              <div class="perfume-info"><div class="perfume-name">Floral Mist</div><div class="perfume-price">$60</div></div>
-            </div>
-
-            <div class="perfume-card small-perfume-card primaverales" data-name="Spring Herb" data-price="48" data-brand="GreenLine" data-desc="Acordes herbales y frescos que recuerdan a un jardín en crecimiento.">
-              <div class="perfume-image"><div class="perfume-bottle">🌱</div></div>
-              <div class="perfume-info"><div class="perfume-name">Spring Herb</div><div class="perfume-price">$48</div></div>
-            </div>
-
+        <div class="perfume-card small-perfume-card primaverales" 
+             data-name="Terre d'Hermès H Bottle" 
+             data-price="135" 
+             data-brand="Hermès" 
+             data-desc="Cítrico terroso con naranja, geranio y sándalo. Fresco y vibrante."
+             data-image="https://via.placeholder.com/300x400?text=Terre+H">
+          <div class="perfume-image">
+            <img src="https://via.placeholder.com/300x400?text=Terre+H" alt="Terre d'Hermès H Bottle" class="perfume-img">
+          </div>
+          <div class="perfume-info">
+            <div class="perfume-name">Terre d'Hermès H Bottle</div>
+            <div class="perfume-brand">Hermès</div>
+            <div class="perfume-price">$135</div>
           </div>
         </div>
       </div>
 
-      <div style="text-align:center;margin-top:2rem;"><a href="index.html" class="category-btn btn-gold">Volver a categorías</a></div>
+      <div class="back-link">
+        <a href="index.html" class="category-btn btn-gold">← Volver a Colecciones</a>
+      </div>
     </section>
   </main>
+
+  <!-- MODAL DE PERFUME -->
+  <div id="perfume-modal" class="perfume-modal">
+    <div class="modal-content">
+      <button class="modal-close" aria-label="Cerrar">&times;</button>
+      
+      <div class="modal-grid">
+        <div class="modal-image-container">
+          <img id="modal-image" src="" alt="" class="modal-image">
+        </div>
+        
+        <div class="modal-info">
+          <h2 id="modal-name" class="modal-name"></h2>
+          <p id="modal-brand" class="modal-brand"></p>
+          <div class="modal-rating">
+            <span class="stars">★★★★★</span>
+            <span class="rating-text">(127 reseñas)</span>
+          </div>
+          
+          <div class="modal-price-section">
+            <span id="modal-price" class="modal-price"></span>
+          </div>
+          
+          <p id="modal-desc" class="modal-description"></p>
+          
+          <div class="modal-details">
+            <div class="detail-item">
+              <strong>Tipo:</strong> Eau de Toilette
+            </div>
+            <div class="detail-item">
+              <strong>Volumen:</strong> 100ml
+            </div>
+            <div class="detail-item">
+              <strong>Durabilidad:</strong> 8-10 horas
+            </div>
+          </div>
+
+          <div class="modal-actions">
+            <button class="btn-add-cart">Agregar al Carrito</button>
+            <button class="btn-favorite">❤️ Favorito</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-content container">
+      <p>&copy; 2025 Esencia Masculina. Todos los derechos reservados.</p>
+    </div>
+  </footer>
 
   <script src="script.js"></script>
 </body>

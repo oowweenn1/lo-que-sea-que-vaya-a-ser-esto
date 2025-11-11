@@ -3,102 +3,205 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Otoño — Esencia Masculina</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <meta name="description" content="Fragancias cálidas y especiadas para el otoño. Descubre aromas con notas de madera, vainilla y especias.">
+  <title>Otoño – Esencia Masculina</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header class="header">
     <nav class="nav-container">
-      <a href="index.html" class="logo">Esencia Masculina</a>
+      <a href="index.html" class="logo">
+        <span class="logo-icon">🧴</span>
+        Esencia Masculina
+      </a>
+      <button class="hamburger" aria-label="Menú" aria-expanded="false">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
     </nav>
+    <div class="mobile-menu">
+      <ul class="mobile-menu-list">
+        <li><a href="index.html" class="mobile-menu-link">Inicio</a></li>
+        <li><a href="index.html#categorias" class="mobile-menu-link">Categorías</a></li>
+      </ul>
+    </div>
   </header>
 
   <main class="container">
-    <section class="section" id="otono">
+    <section class="section" id="otoño">
+      <div class="breadcrumb">
+        <a href="index.html">Colecciones</a> / <span>Otoño</span>
+      </div>
+
       <h1 class="section-title">Otoño</h1>
-      <p class="section-subtitle">Fragancias amaderadas y especiadas para la estación de transición.</p>
+      <p class="section-subtitle">Fragancias cálidas y especiadas con notas de madera, vainilla y especias. Perfectas para tardes doradas y noches acogedoras.</p>
 
-      <div class="category-grid-with-sidebar">
-        <aside class="brand-sidebar">
-          <h4>Filtrar por marca</h4>
-          <div class="brand-filter">
-            <label><input type="checkbox" data-brand="ALL" checked> Todas</label>
-            <label><input type="checkbox" data-brand="Fireside"> Fireside (3)</label>
-            <label><input type="checkbox" data-brand="Nomad"> Nomad (4)</label>
-            <label><input type="checkbox" data-brand="Arbor"> Arbor (3)</label>
+      <div class="sort-bar">
+        <label for="sort">Ordenar:</label>
+        <select id="sort" class="sort-select">
+          <option value="name-asc">A → Z</option>
+          <option value="name-desc">Z → A</option>
+          <option value="price-asc">Precio: Menor a Mayor</option>
+          <option value="price-desc">Precio: Mayor a Menor</option>
+        </select>
+      </div>
+
+      <div class="small-perfumes-grid">
+        <div class="perfume-card small-perfume-card otonales" 
+             data-name="Bleu de Chanel" 
+             data-price="120" 
+             data-brand="Chanel" 
+             data-desc="Cítrico aromático con bergamota, incienso y cedro. Elegante y versátil para otoño."
+             data-image="https://via.placeholder.com/300x400?text=Bleu+Chanel">
+          <div class="perfume-image">
+            <img src="https://via.placeholder.com/300x400?text=Bleu+Chanel" alt="Bleu de Chanel" class="perfume-img">
           </div>
-        </aside>
-
-        <div>
-          <div class="sort-bar" style="display:flex;justify-content:flex-end;gap:1rem;margin-bottom:1rem;">
-            <label for="sort" style="align-self:center;color:var(--text-muted);">Ordenar:</label>
-            <select id="sort" class="sort-select" style="padding:0.6rem 0.8rem;border-radius:10px;background:var(--bg-card);border:1px solid var(--border-light);color:var(--text-primary);">
-              <option value="name-asc">A → Z</option>
-              <option value="name-desc">Z → A</option>
-              <option value="price-asc">Precio ↑</option>
-              <option value="price-desc">Precio ↓</option>
-            </select>
+          <div class="perfume-info">
+            <div class="perfume-name">Bleu de Chanel</div>
+            <div class="perfume-brand">Chanel</div>
+            <div class="perfume-price">$120</div>
           </div>
+        </div>
 
-          <div class="small-perfumes-grid">
-            <div class="perfume-card small-perfume-card otonales" data-name="Amber Woods" data-price="85" data-brand="Fireside" data-desc="Amaderado y cálido, ámbar y nuez que evocan una chimenea acogedora.">
-              <div class="perfume-image"><div class="perfume-bottle">🌰</div></div>
-              <div class="perfume-info"><div class="perfume-name">Amber Woods</div><div class="perfume-price">$85</div></div>
-            </div>
+        <div class="perfume-card small-perfume-card otonales" 
+             data-name="Heeley Sel Marin" 
+             data-price="145" 
+             data-brand="Heeley" 
+             data-desc="Ámbar y sal marina con notas de madera. Cálido y sofisticado para otoño."
+             data-image="https://via.placeholder.com/300x400?text=Sel+Marin">
+          <div class="perfume-image">
+            <img src="https://via.placeholder.com/300x400?text=Sel+Marin" alt="Sel Marin" class="perfume-img">
+          </div>
+          <div class="perfume-info">
+            <div class="perfume-name">Heeley Sel Marin</div>
+            <div class="perfume-brand">Heeley</div>
+            <div class="perfume-price">$145</div>
+          </div>
+        </div>
 
-            <div class="perfume-card small-perfume-card otonales" data-name="Maple Smoke" data-price="78" data-brand="Fireside" data-desc="Dulce y ahumado: savia de arce y humo suave, carácter otoñal.">
-              <div class="perfume-image"><div class="perfume-bottle">🍁</div></div>
-              <div class="perfume-info"><div class="perfume-name">Maple Smoke</div><div class="perfume-price">$78</div></div>
-            </div>
+        <div class="perfume-card small-perfume-card otonales" 
+             data-name="Tobacco Vanille" 
+             data-price="235" 
+             data-brand="Tom Ford" 
+             data-desc="Tabaco, vainilla y especias. Cálido, envolvente y perfecto para noches otoñales."
+             data-image="https://via.placeholder.com/300x400?text=Tobacco+Vanille">
+          <div class="perfume-image">
+            <img src="https://via.placeholder.com/300x400?text=Tobacco+Vanille" alt="Tobacco Vanille" class="perfume-img">
+          </div>
+          <div class="perfume-info">
+            <div class="perfume-name">Tobacco Vanille</div>
+            <div class="perfume-brand">Tom Ford</div>
+            <div class="perfume-price">$235</div>
+          </div>
+        </div>
 
-            <div class="perfume-card small-perfume-card otonales" data-name="Spiced Ember" data-price="74" data-brand="Nomad" data-desc="Especiado y con cuerpo: canela, clavo y base amaderada, cálido.">
-              <div class="perfume-image"><div class="perfume-bottle">🧭</div></div>
-              <div class="perfume-info"><div class="perfume-name">Spiced Ember</div><div class="perfume-price">$74</div></div>
-            </div>
+        <div class="perfume-card small-perfume-card otonales" 
+             data-name="Spicebomb Extreme" 
+             data-price="110" 
+             data-brand="Viktor & Rolf" 
+             data-desc="Especias intensas con comino, jengibre y ámbar. Cálido y masculino."
+             data-image="https://via.placeholder.com/300x400?text=Spicebomb">
+          <div class="perfume-image">
+            <img src="https://via.placeholder.com/300x400?text=Spicebomb" alt="Spicebomb Extreme" class="perfume-img">
+          </div>
+          <div class="perfume-info">
+            <div class="perfume-name">Spicebomb Extreme</div>
+            <div class="perfume-brand">Viktor & Rolf</div>
+            <div class="perfume-price">$110</div>
+          </div>
+        </div>
 
-            <div class="perfume-card small-perfume-card otonales" data-name="Forest Trail" data-price="92" data-brand="Arbor" data-desc="Verde y terroso: hojas húmedas y corteza de árbol, perfecto para paseo en bosque.">
-              <div class="perfume-image"><div class="perfume-bottle">🌲</div></div>
-              <div class="perfume-info"><div class="perfume-name">Forest Trail</div><div class="perfume-price">$92</div></div>
-            </div>
+        <div class="perfume-card small-perfume-card otonales" 
+             data-name="Givenchy Gentleman Reserve Privée" 
+             data-price="128" 
+             data-brand="Givenchy" 
+             data-desc="Cálido con cedro, iris y ámbar. Sofisticado para otoño."
+             data-image="https://via.placeholder.com/300x400?text=Gentleman">
+          <div class="perfume-image">
+            <img src="https://via.placeholder.com/300x400?text=Gentleman" alt="Gentleman Reserve Privée" class="perfume-img">
+          </div>
+          <div class="perfume-info">
+            <div class="perfume-name">Gentleman Reserve Privée</div>
+            <div class="perfume-brand">Givenchy</div>
+            <div class="perfume-price">$128</div>
+          </div>
+        </div>
 
-            <div class="perfume-card small-perfume-card otonales" data-name="Chestnut Ridge" data-price="88" data-brand="Fireside" data-desc="Notas de castaña y madera tostada; sofisticado y reconfortante.">
-              <div class="perfume-image"><div class="perfume-bottle">🌰</div></div>
-              <div class="perfume-info"><div class="perfume-name">Chestnut Ridge</div><div class="perfume-price">$88</div></div>
-            </div>
-
-            <div class="perfume-card small-perfume-card otonales" data-name="Bark & Spice" data-price="69" data-brand="Nomad" data-desc="Robusto con toques especiados y corteza, ideal para looks otoñales.">
-              <div class="perfume-image"><div class="perfume-bottle">🪵</div></div>
-              <div class="perfume-info"><div class="perfume-name">Bark & Spice</div><div class="perfume-price">$69</div></div>
-            </div>
-
-            <div class="perfume-card small-perfume-card otonales" data-name="Spice Route" data-price="72" data-brand="Nomad" data-desc="Aromas de especias exóticas y madera, viaje sensorial cálido.">
-              <div class="perfume-image"><div class="perfume-bottle">🧭</div></div>
-              <div class="perfume-info"><div class="perfume-name">Spice Route</div><div class="perfume-price">$72</div></div>
-            </div>
-
-            <div class="perfume-card small-perfume-card otonales" data-name="Woodland Echo" data-price="95" data-brand="Arbor" data-desc="Fuerte presencia amaderada con matices musgosos y resinosos.">
-              <div class="perfume-image"><div class="perfume-bottle">🌲</div></div>
-              <div class="perfume-info"><div class="perfume-name">Woodland Echo</div><div class="perfume-price">$95</div></div>
-            </div>
-
-            <div class="perfume-card small-perfume-card otonales" data-name="Moss Walk" data-price="90" data-brand="Arbor" data-desc="Acordes musgo y tierra húmeda; fresco-terroso y sofisticado.">
-              <div class="perfume-image"><div class="perfume-bottle">�</div></div>
-              <div class="perfume-info"><div class="perfume-name">Moss Walk</div><div class="perfume-price">$90</div></div>
-            </div>
-
-            <div class="perfume-card small-perfume-card otonales" data-name="Cedar Lane" data-price="80" data-brand="Nomad" data-desc="Cedar seco y limpio, con fondo especiado que aporta calidez.">
-              <div class="perfume-image"><div class="perfume-bottle">🌲</div></div>
-              <div class="perfume-info"><div class="perfume-name">Cedar Lane</div><div class="perfume-price">$80</div></div>
-            </div>
-
+        <div class="perfume-card small-perfume-card otonales" 
+             data-name="Yves Saint Laurent La Nuit" 
+             data-price="98" 
+             data-brand="YSL" 
+             data-desc="Ámbar, ciruela y vainilla. Misterioso y cautivador para noches otoñales."
+             data-image="https://via.placeholder.com/300x400?text=La+Nuit">
+          <div class="perfume-image">
+            <img src="https://via.placeholder.com/300x400?text=La+Nuit" alt="La Nuit" class="perfume-img">
+          </div>
+          <div class="perfume-info">
+            <div class="perfume-name">La Nuit</div>
+            <div class="perfume-brand">YSL</div>
+            <div class="perfume-price">$98</div>
           </div>
         </div>
       </div>
 
-      <div style="text-align:center;margin-top:2rem;"><a href="index.html" class="category-btn btn-gold">Volver a categorías</a></div>
+      <div class="back-link">
+        <a href="index.html" class="category-btn btn-burgundy">← Volver a Colecciones</a>
+      </div>
     </section>
   </main>
+
+  <!-- MODAL DE PERFUME -->
+  <div id="perfume-modal" class="perfume-modal">
+    <div class="modal-content">
+      <button class="modal-close" aria-label="Cerrar">&times;</button>
+      
+      <div class="modal-grid">
+        <div class="modal-image-container">
+          <img id="modal-image" src="" alt="" class="modal-image">
+        </div>
+        
+        <div class="modal-info">
+          <h2 id="modal-name" class="modal-name"></h2>
+          <p id="modal-brand" class="modal-brand"></p>
+          <div class="modal-rating">
+            <span class="stars">★★★★★</span>
+            <span class="rating-text">(127 reseñas)</span>
+          </div>
+          
+          <div class="modal-price-section">
+            <span id="modal-price" class="modal-price"></span>
+          </div>
+          
+          <p id="modal-desc" class="modal-description"></p>
+          
+          <div class="modal-details">
+            <div class="detail-item">
+              <strong>Tipo:</strong> Eau de Parfum
+            </div>
+            <div class="detail-item">
+              <strong>Volumen:</strong> 100ml
+            </div>
+            <div class="detail-item">
+              <strong>Durabilidad:</strong> 10-12 horas
+            </div>
+          </div>
+
+          <div class="modal-actions">
+            <button class="btn-add-cart">Agregar al Carrito</button>
+            <button class="btn-favorite">❤️ Favorito</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-content container">
+      <p>&copy; 2025 Esencia Masculina. Todos los derechos reservados.</p>
+    </div>
+  </footer>
 
   <script src="script.js"></script>
 </body>
