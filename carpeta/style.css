@@ -533,21 +533,46 @@ body {
 /* ===== TIPS GRID ===== */
 .tips-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
+    /* Máximo 4 columnas por fila; las filas son indefinidas */
+    grid-template-columns: repeat(4, minmax(120px, 1fr));
+    gap: 0.8rem;
     margin-top: 3rem;
 }
 
-.tip-card {
-    background: var(--bg-card);
-    border: 1px solid var(--border-color);
-    border-radius: 20px;
-    padding: 2rem;
+
+.modal-option {
+    /* Ahora es un botón */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.25rem;
+    background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.02));
+    border: 1px solid var(--border-light);
+    border-radius: 10px;
+    padding: 0.6rem;
     text-align: center;
-    transition: all 0.4s ease;
+    cursor: pointer;
+    transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease;
+    color: var(--text-primary);
+    font-weight: 600;
+    background-clip: padding-box;
 }
 
-.tip-card:hover {
+.modal-option:hover,
+.modal-option:focus {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-medium);
+    outline: none;
+}
+
+.modal-option:active {
+    transform: translateY(-1px) scale(0.995);
+}
+
+.modal-option .opt-name { font-weight: 700; font-size: 0.95rem; }
+.modal-option .opt-price { color: var(--text-muted); font-size: 0.9rem; }
+.modal-option:hover {
     transform: translateY(-8px);
     border-color: var(--primary-gold);
     box-shadow: var(--shadow-gold);
@@ -860,11 +885,155 @@ body.mobile-menu-open {
     to { transform: rotate(360deg); }
 }
 
-/* ===== CATEGORY PAGE LAYOUT: SIDEBAR + GRID ===== */
-.category-grid-with-sidebar {
+
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
     display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 12000;
+    padding: 2rem;
+}
+
+.modal {
+    width: 100%;
+    max-width: 920px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 14px;
+    padding: 1.25rem;
+    box-shadow: var(--shadow-dark);
+}
+
+.modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.modal-title { font-size: 1.2rem; font-weight: 800; }
+.modal-sub { color: var(--text-muted); font-size: 0.95rem; }
+
+.modal-close {
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+
+.modal-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 0.8rem;
+}
+
+.modal-option {
+    background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.02));
+    border: 1px solid var(--border-light);
+    border-radius: 10px;
+    padding: 0.6rem;
+    text-align: center;
+}
+
+.modal-option .opt-name { font-weight: 700; font-size: 0.95rem; }
+.modal-option .opt-price { color: var(--text-muted); font-size: 0.9rem; }
+
+@media (max-width: 640px) {
+    .modal { padding: 0.8rem; }
+    .modal-grid { gap: 0.5rem; }
+}
+
+@media (max-width: 900px) {
+    .modal-grid { grid-template-columns: repeat(3, minmax(120px, 1fr)); }
+}
+
+@media (max-width: 560px) {
+    .modal-grid { grid-template-columns: repeat(2, minmax(120px, 1fr)); }
+}
+
+@media (max-width: 360px) {
+    .modal-grid { grid-template-columns: 1fr; }
+}
+
+.small-perfumes-grid.layout-grid,
+.perfumes-grid.layout-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 1rem;
+}
+
+.small-perfumes-grid.layout-compact,
+.perfumes-grid.layout-compact {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 0.75rem;
+}
+
+.small-perfumes-grid.layout-list,
+.perfumes-grid.layout-list {
+    display: block;
+}
+
+.small-perfumes-grid.layout-list .perfume-card,
+.perfumes-grid.layout-list .perfume-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.9rem;
+    margin-bottom: 0.75rem;
+    border-radius: 12px;
+}
+
+.layout-controls {
+    display: inline-flex;
+    gap: 0.4rem;
+    align-items: center;
+}
+
+.layout-controls button {
+    background: transparent;
+    color: var(--text-secondary);
+    border: 1px solid var(--border-color);
+    padding: 0.35rem 0.6rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+.layout-controls button.active {
+    background: var(--primary-gold);
+    color: var(--bg-primary);
+    border-color: var(--primary-gold);
+}
+
+@media (max-width: 640px) {
+    .small-perfumes-grid.layout-grid,
+    .perfumes-grid.layout-grid,
+    .small-perfumes-grid.layout-compact,
+    .perfumes-grid.layout-compact {
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    }
+}
+
+.category-grid-with-sidebar {
+    display: grid;
     gap: 2rem;
-    align-items: flex-start;
+    align-items: start;
+}
+
+/* Layout por defecto: split (sidebar a la izquierda, contenido a la derecha) */
+.category-grid-with-sidebar.layout-split {
+    grid-template-columns: 220px 1fr;
+}
+
+/* Layout alternativo: stacked (sidebar encima del grid, todo en una columna) */
+.category-grid-with-sidebar.layout-stacked {
+    grid-template-columns: 1fr;
 }
 
 .brand-sidebar {
@@ -874,6 +1043,23 @@ body.mobile-menu-open {
     border: 1px solid var(--border-color);
     border-radius: 14px;
     padding: 1rem;
+    position: sticky;
+    top: 110px;
+}
+
+/* Stacked wrapper: make sidebar full-width and not sticky */
+.category-grid-with-sidebar.layout-stacked .brand-sidebar {
+    width: 100%;
+    flex: 0 0 auto;
+    position: relative;
+    top: auto;
+    margin-bottom: 1rem;
+}
+
+/* Ensure split layout has fixed sidebar width */
+.category-grid-with-sidebar.layout-split .brand-sidebar {
+    width: 220px;
+    flex: 0 0 220px;
     position: sticky;
     top: 110px;
 }
@@ -907,6 +1093,7 @@ body.mobile-menu-open {
 
 .small-perfumes-grid {
     display: grid;
+    /* Restaurado al valor anterior: mínimo 130px para que la columna derecha pueda mostrar más tarjetas por fila */
     grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
     gap: 1rem;
     align-items: start;
@@ -941,8 +1128,9 @@ body.mobile-menu-open {
 }
 
 @media (max-width: 900px) {
+    /* For small screens default to stacked regardless of chosen layout */
     .category-grid-with-sidebar {
-        flex-direction: column;
+        grid-template-columns: 1fr !important;
     }
 
     .brand-sidebar {

@@ -19,41 +19,81 @@
       <h1 class="section-title">Verano</h1>
       <p class="section-subtitle">Fragancias frescas y vibrantes para los días cálidos.</p>
 
-      <div class="sort-bar" style="display:flex;justify-content:flex-end;gap:1rem;margin-bottom:1rem;">
-        <label for="sort" style="align-self:center;color:var(--text-muted);">Ordenar:</label>
-        <select id="sort" class="sort-select" style="padding:0.6rem 0.8rem;border-radius:10px;background:var(--bg-card);border:1px solid var(--border-light);color:var(--text-primary);">
-          <option value="name-asc">A → Z</option>
-          <option value="name-desc">Z → A</option>
-          <option value="price-asc">Precio ↑</option>
-          <option value="price-desc">Precio ↓</option>
-        </select>
-      </div>
+      <div class="category-grid-with-sidebar">
+        <aside class="brand-sidebar">
+          <h4>Filtrar por marca</h4>
+          <div class="brand-filter">
+            <label><input type="checkbox" data-brand="ALL" checked> Todas</label>
+            <label><input type="checkbox" data-brand="SunCo"> SunCo (3)</label>
+            <label><input type="checkbox" data-brand="MarineLab"> MarineLab (3)</label>
+            <label><input type="checkbox" data-brand="Tropica"> Tropica (4)</label>
+          </div>
+        </aside>
 
-      <div class="small-perfumes-grid">
-        <div class="perfume-card small-perfume-card veraniegas" data-name="Citrus Breeze" data-price="59" data-brand="SunCo">
-          <div class="perfume-image"><div class="perfume-bottle">🍋</div></div>
-          <div class="perfume-info">
-            <div class="perfume-name">Citrus Breeze</div>
-            <div class="perfume-price">$59</div>
+        <div>
+          <div class="sort-bar" style="display:flex;justify-content:flex-end;gap:1rem;margin-bottom:1rem;">
+            <label for="sort" style="align-self:center;color:var(--text-muted);">Ordenar:</label>
+            <select id="sort" class="sort-select" style="padding:0.6rem 0.8rem;border-radius:10px;background:var(--bg-card);border:1px solid var(--border-light);color:var(--text-primary);">
+              <option value="name-asc">A → Z</option>
+              <option value="name-desc">Z → A</option>
+              <option value="price-asc">Precio ↑</option>
+              <option value="price-desc">Precio ↓</option>
+            </select>
+          </div>
+
+          <div class="small-perfumes-grid">
+            <div class="perfume-card small-perfume-card veraniegas" data-name="Citrus Breeze" data-price="59" data-brand="SunCo" data-desc="Frescura cítrica con notas de limón y bergamota, ideal para el día a día.">
+              <div class="perfume-image"><div class="perfume-bottle">🍋</div></div>
+              <div class="perfume-info"><div class="perfume-name">Citrus Breeze</div><div class="perfume-price">$59</div></div>
+            </div>
+
+            <div class="perfume-card small-perfume-card veraniegas" data-name="Sunny Twist" data-price="62" data-brand="SunCo" data-desc="Aroma afrutado y brillante con notas de naranja y jazmín ligero.">
+              <div class="perfume-image"><div class="perfume-bottle">🍊</div></div>
+              <div class="perfume-info"><div class="perfume-name">Sunny Twist</div><div class="perfume-price">$62</div></div>
+            </div>
+
+            <div class="perfume-card small-perfume-card veraniegas" data-name="Sea Whisper" data-price="52" data-brand="MarineLab" data-desc="Brisa marina y ozónica con un corazón fresco y ligero, perfecto para verano.">
+              <div class="perfume-image"><div class="perfume-bottle">🌊</div></div>
+              <div class="perfume-info"><div class="perfume-name">Sea Whisper</div><div class="perfume-price">$52</div></div>
+            </div>
+
+            <div class="perfume-card small-perfume-card veraniegas" data-name="Coconut Zest" data-price="58" data-brand="Tropica" data-desc="Notas cremosas de coco y toques tropicales, suave y veraniego.">
+              <div class="perfume-image"><div class="perfume-bottle">🥥</div></div>
+              <div class="perfume-info"><div class="perfume-name">Coconut Zest</div><div class="perfume-price">$58</div></div>
+            </div>
+
+            <div class="perfume-card small-perfume-card veraniegas" data-name="Lime Crush" data-price="47" data-brand="SunCo" data-desc="Explosión cítrica de lima y verbena, ligero y refrescante.">
+              <div class="perfume-image"><div class="perfume-bottle">🍈</div></div>
+              <div class="perfume-info"><div class="perfume-name">Lime Crush</div><div class="perfume-price">$47</div></div>
+            </div>
+
+            <div class="perfume-card small-perfume-card veraniegas" data-name="Coral Bloom" data-price="71" data-brand="Tropica" data-desc="Flor tropical con toques afrutados y un fondo dulce y elegante.">
+              <div class="perfume-image"><div class="perfume-bottle">🌺</div></div>
+              <div class="perfume-info"><div class="perfume-name">Coral Bloom</div><div class="perfume-price">$71</div></div>
+            </div>
+
+            <div class="perfume-card small-perfume-card veraniegas" data-name="Ocean Mist" data-price="49" data-brand="MarineLab" data-desc="Aroma fresco oceánico con notas salinas y acordes acuáticos suaves.">
+              <div class="perfume-image"><div class="perfume-bottle">🌊</div></div>
+              <div class="perfume-info"><div class="perfume-name">Ocean Mist</div><div class="perfume-price">$49</div></div>
+            </div>
+
+            <div class="perfume-card small-perfume-card veraniegas" data-name="Tropical Dawn" data-price="69" data-brand="Tropica" data-desc="Combinación de frutas exóticas y flores para un inicio de día energético.">
+              <div class="perfume-image"><div class="perfume-bottle">🌺</div></div>
+              <div class="perfume-info"><div class="perfume-name">Tropical Dawn</div><div class="perfume-price">$69</div></div>
+            </div>
+
+            <div class="perfume-card small-perfume-card veraniegas" data-name="Beach Glass" data-price="55" data-brand="MarineLab" data-desc="Limpio y mineral, recuerda a una tarde en la playa con brisa salina.">
+              <div class="perfume-image"><div class="perfume-bottle">🪸</div></div>
+              <div class="perfume-info"><div class="perfume-name">Beach Glass</div><div class="perfume-price">$55</div></div>
+            </div>
+
+            <div class="perfume-card small-perfume-card veraniegas" data-name="Mango Rush" data-price="64" data-brand="Tropica" data-desc="Dulce y jugoso: mango y notas tropicales, llamativo y veraniego.">
+              <div class="perfume-image"><div class="perfume-bottle">🥭</div></div>
+              <div class="perfume-info"><div class="perfume-name">Mango Rush</div><div class="perfume-price">$64</div></div>
+            </div>
+
           </div>
         </div>
-
-        <div class="perfume-card small-perfume-card veraniegas" data-name="Ocean Mist" data-price="49" data-brand="MarineLab">
-          <div class="perfume-image"><div class="perfume-bottle">🌊</div></div>
-          <div class="perfume-info">
-            <div class="perfume-name">Ocean Mist</div>
-            <div class="perfume-price">$49</div>
-          </div>
-        </div>
-
-        <div class="perfume-card small-perfume-card veraniegas" data-name="Tropical Dawn" data-price="69" data-brand="Tropica">
-          <div class="perfume-image"><div class="perfume-bottle">🌺</div></div>
-          <div class="perfume-info">
-            <div class="perfume-name">Tropical Dawn</div>
-            <div class="perfume-price">$69</div>
-          </div>
-        </div>
-
       </div>
 
       <div style="text-align:center;margin-top:2rem;"><a href="index.html" class="category-btn btn-burgundy">Volver a categorías</a></div>

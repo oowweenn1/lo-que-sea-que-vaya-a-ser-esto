@@ -19,41 +19,81 @@
       <h1 class="section-title">Primavera</h1>
       <p class="section-subtitle">Fragancias florales y ligeras para renovar el día.</p>
 
-      <div class="sort-bar" style="display:flex;justify-content:flex-end;gap:1rem;margin-bottom:1rem;">
-        <label for="sort" style="align-self:center;color:var(--text-muted);">Ordenar:</label>
-        <select id="sort" class="sort-select" style="padding:0.6rem 0.8rem;border-radius:10px;background:var(--bg-card);border:1px solid var(--border-light);color:var(--text-primary);">
-          <option value="name-asc">A → Z</option>
-          <option value="name-desc">Z → A</option>
-          <option value="price-asc">Precio ↑</option>
-          <option value="price-desc">Precio ↓</option>
-        </select>
-      </div>
+      <div class="category-grid-with-sidebar">
+        <aside class="brand-sidebar">
+          <h4>Filtrar por marca</h4>
+          <div class="brand-filter">
+            <label><input type="checkbox" data-brand="ALL" checked> Todas</label>
+            <label><input type="checkbox" data-brand="FloraCo"> FloraCo (3)</label>
+            <label><input type="checkbox" data-brand="DawnLabs"> DawnLabs (3)</label>
+            <label><input type="checkbox" data-brand="GreenLine"> GreenLine (4)</label>
+          </div>
+        </aside>
 
-      <div class="small-perfumes-grid">
-        <div class="perfume-card small-perfume-card primaverales" data-name="Blossom Air" data-price="65" data-brand="FloraCo">
-          <div class="perfume-image"><div class="perfume-bottle">🌼</div></div>
-          <div class="perfume-info">
-            <div class="perfume-name">Blossom Air</div>
-            <div class="perfume-price">$65</div>
+        <div>
+          <div class="sort-bar" style="display:flex;justify-content:flex-end;gap:1rem;margin-bottom:1rem;">
+            <label for="sort" style="align-self:center;color:var(--text-muted);">Ordenar:</label>
+            <select id="sort" class="sort-select" style="padding:0.6rem 0.8rem;border-radius:10px;background:var(--bg-card);border:1px solid var(--border-light);color:var(--text-primary);">
+              <option value="name-asc">A → Z</option>
+              <option value="name-desc">Z → A</option>
+              <option value="price-asc">Precio ↑</option>
+              <option value="price-desc">Precio ↓</option>
+            </select>
+          </div>
+
+          <div class="small-perfumes-grid">
+            <div class="perfume-card small-perfume-card primaverales" data-name="Blossom Air" data-price="65" data-brand="FloraCo" data-desc="Florales suaves con un corazón de pétalos y un acabado limpio.">
+              <div class="perfume-image"><div class="perfume-bottle">🌼</div></div>
+              <div class="perfume-info"><div class="perfume-name">Blossom Air</div><div class="perfume-price">$65</div></div>
+            </div>
+
+            <div class="perfume-card small-perfume-card primaverales" data-name="Petal Mist" data-price="58" data-brand="FloraCo" data-desc="Ligera bruma floral con notas de peonía y almizcle ligero.">
+              <div class="perfume-image"><div class="perfume-bottle">💮</div></div>
+              <div class="perfume-info"><div class="perfume-name">Petal Mist</div><div class="perfume-price">$58</div></div>
+            </div>
+
+            <div class="perfume-card small-perfume-card primaverales" data-name="Dew Kiss" data-price="49" data-brand="DawnLabs" data-desc="Fresco y húmedo, con ligeras notas verdes y un final delicado.">
+              <div class="perfume-image"><div class="perfume-bottle">💧</div></div>
+              <div class="perfume-info"><div class="perfume-name">Dew Kiss</div><div class="perfume-price">$49</div></div>
+            </div>
+
+            <div class="perfume-card small-perfume-card primaverales" data-name="Meadow Walk" data-price="46" data-brand="GreenLine" data-desc="Herbal y floral, recuerda un paseo por praderas en flor.">
+              <div class="perfume-image"><div class="perfume-bottle">🍃</div></div>
+              <div class="perfume-info"><div class="perfume-name">Meadow Walk</div><div class="perfume-price">$46</div></div>
+            </div>
+
+            <div class="perfume-card small-perfume-card primaverales" data-name="Sunrise Bloom" data-price="63" data-brand="DawnLabs" data-desc="Notas cítricas y florales que despiertan los sentidos al amanecer.">
+              <div class="perfume-image"><div class="perfume-bottle">🌅</div></div>
+              <div class="perfume-info"><div class="perfume-name">Sunrise Bloom</div><div class="perfume-price">$63</div></div>
+            </div>
+
+            <div class="perfume-card small-perfume-card primaverales" data-name="Herb Garden" data-price="44" data-brand="GreenLine" data-desc="Aromas herbales y verdes con toque limpio, ideal para uso diario.">
+              <div class="perfume-image"><div class="perfume-bottle">🌿</div></div>
+              <div class="perfume-info"><div class="perfume-name">Herb Garden</div><div class="perfume-price">$44</div></div>
+            </div>
+
+            <div class="perfume-card small-perfume-card primaverales" data-name="Morning Bloom" data-price="55" data-brand="DawnLabs" data-desc="Floral luminoso con acordes de rosa y neroli, fresco y elegante.">
+              <div class="perfume-image"><div class="perfume-bottle">🌸</div></div>
+              <div class="perfume-info"><div class="perfume-name">Morning Bloom</div><div class="perfume-price">$55</div></div>
+            </div>
+
+            <div class="perfume-card small-perfume-card primaverales" data-name="Green Meadow" data-price="45" data-brand="GreenLine" data-desc="Verde y crujiente, con matices de hierba recién cortada.">
+              <div class="perfume-image"><div class="perfume-bottle">🌿</div></div>
+              <div class="perfume-info"><div class="perfume-name">Green Meadow</div><div class="perfume-price">$45</div></div>
+            </div>
+
+            <div class="perfume-card small-perfume-card primaverales" data-name="Floral Mist" data-price="60" data-brand="FloraCo" data-desc="Mezcla floral pura con un acabado suave, ideal para eventos diurnos.">
+              <div class="perfume-image"><div class="perfume-bottle">�</div></div>
+              <div class="perfume-info"><div class="perfume-name">Floral Mist</div><div class="perfume-price">$60</div></div>
+            </div>
+
+            <div class="perfume-card small-perfume-card primaverales" data-name="Spring Herb" data-price="48" data-brand="GreenLine" data-desc="Acordes herbales y frescos que recuerdan a un jardín en crecimiento.">
+              <div class="perfume-image"><div class="perfume-bottle">🌱</div></div>
+              <div class="perfume-info"><div class="perfume-name">Spring Herb</div><div class="perfume-price">$48</div></div>
+            </div>
+
           </div>
         </div>
-
-        <div class="perfume-card small-perfume-card primaverales" data-name="Morning Bloom" data-price="55" data-brand="DawnLabs">
-          <div class="perfume-image"><div class="perfume-bottle">🌸</div></div>
-          <div class="perfume-info">
-            <div class="perfume-name">Morning Bloom</div>
-            <div class="perfume-price">$55</div>
-          </div>
-        </div>
-
-        <div class="perfume-card small-perfume-card primaverales" data-name="Green Meadow" data-price="45" data-brand="GreenLine">
-          <div class="perfume-image"><div class="perfume-bottle">🌿</div></div>
-          <div class="perfume-info">
-            <div class="perfume-name">Green Meadow</div>
-            <div class="perfume-price">$45</div>
-          </div>
-        </div>
-
       </div>
 
       <div style="text-align:center;margin-top:2rem;"><a href="index.html" class="category-btn btn-gold">Volver a categorías</a></div>

@@ -19,41 +19,81 @@
       <h1 class="section-title">Otoño</h1>
       <p class="section-subtitle">Fragancias amaderadas y especiadas para la estación de transición.</p>
 
-      <div class="sort-bar" style="display:flex;justify-content:flex-end;gap:1rem;margin-bottom:1rem;">
-        <label for="sort" style="align-self:center;color:var(--text-muted);">Ordenar:</label>
-        <select id="sort" class="sort-select" style="padding:0.6rem 0.8rem;border-radius:10px;background:var(--bg-card);border:1px solid var(--border-light);color:var(--text-primary);">
-          <option value="name-asc">A → Z</option>
-          <option value="name-desc">Z → A</option>
-          <option value="price-asc">Precio ↑</option>
-          <option value="price-desc">Precio ↓</option>
-        </select>
-      </div>
+      <div class="category-grid-with-sidebar">
+        <aside class="brand-sidebar">
+          <h4>Filtrar por marca</h4>
+          <div class="brand-filter">
+            <label><input type="checkbox" data-brand="ALL" checked> Todas</label>
+            <label><input type="checkbox" data-brand="Fireside"> Fireside (3)</label>
+            <label><input type="checkbox" data-brand="Nomad"> Nomad (4)</label>
+            <label><input type="checkbox" data-brand="Arbor"> Arbor (3)</label>
+          </div>
+        </aside>
 
-      <div class="small-perfumes-grid">
-        <div class="perfume-card small-perfume-card otonales" data-name="Amber Woods" data-price="85" data-brand="Fireside">
-          <div class="perfume-image"><div class="perfume-bottle">🌰</div></div>
-          <div class="perfume-info">
-            <div class="perfume-name">Amber Woods</div>
-            <div class="perfume-price">$85</div>
+        <div>
+          <div class="sort-bar" style="display:flex;justify-content:flex-end;gap:1rem;margin-bottom:1rem;">
+            <label for="sort" style="align-self:center;color:var(--text-muted);">Ordenar:</label>
+            <select id="sort" class="sort-select" style="padding:0.6rem 0.8rem;border-radius:10px;background:var(--bg-card);border:1px solid var(--border-light);color:var(--text-primary);">
+              <option value="name-asc">A → Z</option>
+              <option value="name-desc">Z → A</option>
+              <option value="price-asc">Precio ↑</option>
+              <option value="price-desc">Precio ↓</option>
+            </select>
+          </div>
+
+          <div class="small-perfumes-grid">
+            <div class="perfume-card small-perfume-card otonales" data-name="Amber Woods" data-price="85" data-brand="Fireside" data-desc="Amaderado y cálido, ámbar y nuez que evocan una chimenea acogedora.">
+              <div class="perfume-image"><div class="perfume-bottle">🌰</div></div>
+              <div class="perfume-info"><div class="perfume-name">Amber Woods</div><div class="perfume-price">$85</div></div>
+            </div>
+
+            <div class="perfume-card small-perfume-card otonales" data-name="Maple Smoke" data-price="78" data-brand="Fireside" data-desc="Dulce y ahumado: savia de arce y humo suave, carácter otoñal.">
+              <div class="perfume-image"><div class="perfume-bottle">🍁</div></div>
+              <div class="perfume-info"><div class="perfume-name">Maple Smoke</div><div class="perfume-price">$78</div></div>
+            </div>
+
+            <div class="perfume-card small-perfume-card otonales" data-name="Spiced Ember" data-price="74" data-brand="Nomad" data-desc="Especiado y con cuerpo: canela, clavo y base amaderada, cálido.">
+              <div class="perfume-image"><div class="perfume-bottle">🧭</div></div>
+              <div class="perfume-info"><div class="perfume-name">Spiced Ember</div><div class="perfume-price">$74</div></div>
+            </div>
+
+            <div class="perfume-card small-perfume-card otonales" data-name="Forest Trail" data-price="92" data-brand="Arbor" data-desc="Verde y terroso: hojas húmedas y corteza de árbol, perfecto para paseo en bosque.">
+              <div class="perfume-image"><div class="perfume-bottle">🌲</div></div>
+              <div class="perfume-info"><div class="perfume-name">Forest Trail</div><div class="perfume-price">$92</div></div>
+            </div>
+
+            <div class="perfume-card small-perfume-card otonales" data-name="Chestnut Ridge" data-price="88" data-brand="Fireside" data-desc="Notas de castaña y madera tostada; sofisticado y reconfortante.">
+              <div class="perfume-image"><div class="perfume-bottle">🌰</div></div>
+              <div class="perfume-info"><div class="perfume-name">Chestnut Ridge</div><div class="perfume-price">$88</div></div>
+            </div>
+
+            <div class="perfume-card small-perfume-card otonales" data-name="Bark & Spice" data-price="69" data-brand="Nomad" data-desc="Robusto con toques especiados y corteza, ideal para looks otoñales.">
+              <div class="perfume-image"><div class="perfume-bottle">🪵</div></div>
+              <div class="perfume-info"><div class="perfume-name">Bark & Spice</div><div class="perfume-price">$69</div></div>
+            </div>
+
+            <div class="perfume-card small-perfume-card otonales" data-name="Spice Route" data-price="72" data-brand="Nomad" data-desc="Aromas de especias exóticas y madera, viaje sensorial cálido.">
+              <div class="perfume-image"><div class="perfume-bottle">🧭</div></div>
+              <div class="perfume-info"><div class="perfume-name">Spice Route</div><div class="perfume-price">$72</div></div>
+            </div>
+
+            <div class="perfume-card small-perfume-card otonales" data-name="Woodland Echo" data-price="95" data-brand="Arbor" data-desc="Fuerte presencia amaderada con matices musgosos y resinosos.">
+              <div class="perfume-image"><div class="perfume-bottle">🌲</div></div>
+              <div class="perfume-info"><div class="perfume-name">Woodland Echo</div><div class="perfume-price">$95</div></div>
+            </div>
+
+            <div class="perfume-card small-perfume-card otonales" data-name="Moss Walk" data-price="90" data-brand="Arbor" data-desc="Acordes musgo y tierra húmeda; fresco-terroso y sofisticado.">
+              <div class="perfume-image"><div class="perfume-bottle">�</div></div>
+              <div class="perfume-info"><div class="perfume-name">Moss Walk</div><div class="perfume-price">$90</div></div>
+            </div>
+
+            <div class="perfume-card small-perfume-card otonales" data-name="Cedar Lane" data-price="80" data-brand="Nomad" data-desc="Cedar seco y limpio, con fondo especiado que aporta calidez.">
+              <div class="perfume-image"><div class="perfume-bottle">🌲</div></div>
+              <div class="perfume-info"><div class="perfume-name">Cedar Lane</div><div class="perfume-price">$80</div></div>
+            </div>
+
           </div>
         </div>
-
-        <div class="perfume-card small-perfume-card otonales" data-name="Spice Route" data-price="72" data-brand="Nomad">
-          <div class="perfume-image"><div class="perfume-bottle">🧭</div></div>
-          <div class="perfume-info">
-            <div class="perfume-name">Spice Route</div>
-            <div class="perfume-price">$72</div>
-          </div>
-        </div>
-
-        <div class="perfume-card small-perfume-card otonales" data-name="Woodland Echo" data-price="95" data-brand="Arbor">
-          <div class="perfume-image"><div class="perfume-bottle">🌲</div></div>
-          <div class="perfume-info">
-            <div class="perfume-name">Woodland Echo</div>
-            <div class="perfume-price">$95</div>
-          </div>
-        </div>
-
       </div>
 
       <div style="text-align:center;margin-top:2rem;"><a href="index.html" class="category-btn btn-gold">Volver a categorías</a></div>

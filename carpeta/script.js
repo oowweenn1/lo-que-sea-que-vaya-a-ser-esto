@@ -553,14 +553,282 @@ document.addEventListener('DOMContentLoaded', function() {
     // Run brand filter initializer
     initBrandFilter();
 
+    // ===== PERFUME MODALS =====
+    function initPerfumeModals() {
+        // Reuse a single modal element
+        let modalOverlay = null;
+
+        function buildModal() {
+            modalOverlay = document.createElement('div');
+            modalOverlay.className = 'modal-overlay';
+
+            const modal = document.createElement('div');
+            modal.className = 'modal';
+
+            modal.innerHTML = `
+                <div class="modal-header">
+                    <div style="display:flex;gap:1rem;align-items:center;">
+                        <div class="modal-emoji" style="font-size:2.4rem;">🧴</div>
+                        <div>
+                            <div class="modal-title">Título</div>
+                            <div class="modal-sub">Marca · Precio</div>
+                            <div class="modal-desc" style="margin-top:0.4rem;color:var(--text-secondary);font-size:0.95rem;">Mini resumen...</div>
+                        </div>
+                    </div>
+                    <div><button class="modal-close" aria-label="Cerrar">✕</button></div>
+                </div>
+                <div class="modal-badges" style="display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:0.8rem;"></div>
+                <div class="modal-grid"></div>
+            `;
+
+            modalOverlay.appendChild(modal);
+
+            // Close handlers
+            modalOverlay.addEventListener('click', (e) => {
+                if (e.target === modalOverlay) closeModal();
+            });
+
+            modal.querySelector('.modal-close').addEventListener('click', closeModal);
+
+            // close on ESC
+            document.addEventListener('keydown', function escHandler(e) {
+                if (e.key === 'Escape') closeModal();
+            });
+
+            return modalOverlay;
+        }
+
+        function openModalForCard(card) {
+            if (!modalOverlay) document.body.appendChild(buildModal());
+            if (!document.body.contains(modalOverlay)) document.body.appendChild(modalOverlay);
+
+            const modal = modalOverlay.querySelector('.modal');
+
+            const titleEl = modal.querySelector('.modal-title');
+            const subEl = modal.querySelector('.modal-sub');
+            const descEl = modal.querySelector('.modal-desc');
+            const emojiEl = modal.querySelector('.modal-emoji');
+            const badgesEl = modal.querySelector('.modal-badges');
+            const gridEl = modal.querySelector('.modal-grid');
+
+            const name = card.dataset.name || card.querySelector('.perfume-name')?.textContent || 'Perfume';
+            const brand = card.dataset.brand || card.querySelector('.perfume-brand')?.textContent || '';
+            const price = card.dataset.price ? `$${card.dataset.price}` : card.querySelector('.perfume-price')?.textContent || '';
+            const desc = card.dataset.desc || '';
+            const emoji = card.querySelector('.perfume-bottle') ? card.querySelector('.perfume-bottle').textContent.trim() : '';
+
+            // Try to infer category from classList if present
+            const knownCats = ['veraniegas','otonales','invernales','primaverales'];
+            let category = '';
+            card.classList.forEach(cl => { if (knownCats.includes(cl)) category = cl; });
+
+            titleEl.textContent = name;
+            subEl.textContent = `${brand} · ${price}`;
+            descEl.textContent = desc || 'Descripción no disponible.';
+            emojiEl.textContent = emoji || '🧴';
+
+            // Badges: brand + category
+            badgesEl.innerHTML = '';
+            if (brand) {
+                const b = document.createElement('span');
+                b.textContent = brand;
+                b.style.cssText = 'background: rgba(212,175,55,0.12);color:var(--primary-gold);padding:0.25rem 0.6rem;border-radius:999px;font-weight:700;font-size:0.85rem;border:1px solid rgba(212,175,55,0.16);';
+                badgesEl.appendChild(b);
+            }
+            if (category) {
+                const c = document.createElement('span');
+                c.textContent = category.replace(/s$/,'');
+                c.style.cssText = 'background: rgba(255,255,255,0.02);color:var(--text-secondary);padding:0.25rem 0.6rem;border-radius:999px;font-weight:600;font-size:0.85rem;border:1px solid var(--border-light);';
+                badgesEl.appendChild(c);
+            }
+
+            // Build a small grid of variants/options for this perfume
+            gridEl.innerHTML = '';
+
+            // Create a few options (sizes / concentraciones) for demo
+            const sampleOptions = [
+                {name: 'Eau de Parfum 50ml', price: parseFloat(card.dataset.price || '0')},
+                {name: 'Eau de Parfum 100ml', price: parseFloat(card.dataset.price || '0') + 20},
+                {name: 'Eau de Toilette 50ml', price: Math.max(0, parseFloat(card.dataset.price || '0') - 10)},
+                {name: 'Travel 10ml', price: Math.max(0, Math.floor((parseFloat(card.dataset.price || '0') / 6)))},
+                {name: 'Discovery Set', price: Math.max(0, Math.floor((parseFloat(card.dataset.price || '0') / 3)))},
+                {name: 'Refill 200ml', price: Math.max(0, parseFloat(card.dataset.price || '0') + 50)}
+            ];
+
+            // Render options as read-only (no interaction) so the choices cannot be modified by the user
+            sampleOptions.forEach(opt => {
+                const item = document.createElement('div');
+                item.className = 'modal-option';
+                item.setAttribute('aria-disabled', 'true');
+                item.title = 'Opciones de producto (solo lectura)';
+                item.innerHTML = `<div class="opt-name">${opt.name}</div><div class="opt-price">$${opt.price}</div>`;
+
+                // Make clearly non-interactive
+                item.style.cursor = 'default';
+                item.style.pointerEvents = 'none';
+                item.style.opacity = '0.95';
+
+                gridEl.appendChild(item);
+            });
+
+            // Show
+            modalOverlay.style.display = 'flex';
+            setTimeout(() => modalOverlay.style.opacity = '1', 10);
+        }
+
+        function closeModal() {
+            if (!modalOverlay) return;
+            modalOverlay.style.opacity = '0';
+            setTimeout(() => {
+                if (modalOverlay && modalOverlay.parentNode) modalOverlay.parentNode.removeChild(modalOverlay);
+            }, 250);
+        }
+
+        // Attach click handlers to perfume cards
+        function attachHandlers() {
+            const allCards = document.querySelectorAll('.perfume-card');
+            allCards.forEach(card => {
+                // Avoid double-binding
+                if (card.dataset.modalBound) return;
+                card.addEventListener('click', (e) => {
+                    // If the click was on a button inside the card (Comprar), ignore here
+                    if (e.target.closest('.perfume-btn')) return;
+                    openModalForCard(card);
+                });
+                card.dataset.modalBound = '1';
+            });
+        }
+
+        // Initial attach
+        attachHandlers();
+
+        // If sorter reorders nodes, handlers remain attached; if brand filter rebuilds grid we re-run attach
+        // Observe grid for childlist changes and re-attach when nodes are added
+        const grids = document.querySelectorAll('.perfumes-grid, .small-perfumes-grid');
+        grids.forEach(g => {
+            const mo = new MutationObserver(() => attachHandlers());
+            mo.observe(g, { childList: true, subtree: false });
+        });
+    }
+
+    initPerfumeModals();
+
+    // ===== LAYOUT CONTROLS =====
+    // Allow switching between grid / compact / list layouts and persist choice per-page/grid
+    function applyLayoutToGrid(grid, mode) {
+        if (!grid) return;
+        const classMap = {
+            grid: 'layout-grid',
+            list: 'layout-list'
+        };
+        // remove any layout classes
+        grid.classList.remove('layout-grid', 'layout-compact', 'layout-list');
+        const cls = classMap[mode] || classMap.grid;
+        grid.classList.add(cls);
+    }
+
+    function setActiveButton(controls, mode) {
+        if (!controls) return;
+        const btns = controls.querySelectorAll('.layout-btn');
+        btns.forEach(b => b.classList.toggle('active', b.dataset.layout === mode));
+    }
+
+    function initLayoutControls() {
+        const bars = document.querySelectorAll('.sort-bar');
+        bars.forEach(bar => {
+            if (bar.dataset.layoutControlsBound) return;
+
+            // Create controls container
+            const controls = document.createElement('div');
+            controls.className = 'layout-controls';
+            // two groups: wrapper layout (split / stacked) + grid layout (grid / compact / list)
+            controls.innerHTML = `
+                <button class="layout-wrapper-btn" data-wrapper="split" title="Side by side">▤</button>
+                <button class="layout-wrapper-btn" data-wrapper="stacked" title="Stacked">≡</button>
+                <span style="width:8px"></span>
+                <button class="layout-btn" data-layout="grid" title="Grid">▦</button>
+                <button class="layout-btn" data-layout="list" title="List">≣</button>
+            `;
+
+            bar.appendChild(controls);
+
+            // Find the associated grid (main content area)
+            const parent = bar.closest('.category-grid-with-sidebar') || document;
+            const grid = parent.querySelector('.small-perfumes-grid, .perfumes-grid');
+
+            // Build a storage key scoped to path + grid type
+            const gridType = grid ? (grid.classList.contains('small-perfumes-grid') ? 'small' : 'large') : 'unknown';
+            const storageKey = `layoutMode:${window.location.pathname}:${gridType}`;
+
+            // Wrapper layout storage (split | stacked)
+            const wrapperStorageKey = `wrapperLayout:${window.location.pathname}`;
+
+            // Apply initial grid mode from localStorage (default: grid)
+            const initial = localStorage.getItem(storageKey) || 'grid';
+            applyLayoutToGrid(grid, initial);
+            setActiveButton(controls, initial);
+
+            // Apply initial wrapper layout (default: split)
+            const initialWrapper = localStorage.getItem(wrapperStorageKey) || 'split';
+            if (parent && parent.classList) {
+                parent.classList.remove('layout-split', 'layout-stacked');
+                parent.classList.add(`layout-${initialWrapper}`);
+            }
+            // mark wrapper buttons active
+            const wrapperBtns = controls.querySelectorAll('.layout-wrapper-btn');
+            wrapperBtns.forEach(b => b.classList.toggle('active', b.dataset.wrapper === initialWrapper));
+
+            // Listen for clicks (both wrapper and grid/list layout buttons)
+            controls.addEventListener('click', (e) => {
+                // grid/list layout buttons
+                const btn = e.target.closest('.layout-btn');
+                if (btn) {
+                    const mode = btn.dataset.layout;
+                    // only allow 'grid' or 'list' (ignore any other values)
+                    const allowed = mode === 'list' ? 'list' : 'grid';
+                    applyLayoutToGrid(grid, allowed);
+                    setActiveButton(controls, allowed);
+                    try { localStorage.setItem(storageKey, allowed); } catch (err) { /* ignore storage errors */ }
+                    return;
+                }
+
+                // wrapper layout buttons
+                const wbtn = e.target.closest('.layout-wrapper-btn');
+                if (wbtn && parent && parent.classList) {
+                    const wmode = wbtn.dataset.wrapper; // 'split' | 'stacked'
+                    parent.classList.remove('layout-split', 'layout-stacked');
+                    parent.classList.add(`layout-${wmode}`);
+                    // update active states
+                    wrapperBtns.forEach(b => b.classList.toggle('active', b === wbtn));
+                    try { localStorage.setItem(wrapperStorageKey, wmode); } catch (err) { /* ignore */ }
+                    return;
+                }
+            });
+
+            bar.dataset.layoutControlsBound = '1';
+        });
+    }
+
+    // Initialize layout controls on the page
+    initLayoutControls();
+
     // ===== INICIALIZACIÓN =====
     console.log('👔 Esencia Masculina cargado exitosamente!');
     console.log('💡 Tip: Escribe "perfume" para activar el easter egg');
 
-    // Notificación de bienvenida
-    setTimeout(() => {
-        showNotification('¡Bienvenido a Esencia Masculina!', 'success');
-    }, 1000);
+    // Notificación de bienvenida (solo en la página principal)
+    try {
+        const path = window.location.pathname || '';
+        const isIndex = path.endsWith('index.html') || path === '/' || path === '';
+        if (isIndex) {
+            setTimeout(() => {
+                showNotification('¡Bienvenido a Esencia Masculina!', 'success');
+            }, 1000);
+        }
+    } catch (err) {
+        // si algo falla, no bloquear la ejecución
+        console.error('Error comprobando ruta para notificación de bienvenida', err);
+    }
 
     // Log de versión
     console.log('%c Esencia Masculina v2.0 ', 

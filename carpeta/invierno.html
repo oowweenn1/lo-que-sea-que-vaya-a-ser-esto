@@ -19,51 +19,92 @@
       <h1 class="section-title">Invierno</h1>
       <p class="section-subtitle">Aromas intensos y cálidos para noches sofisticadas.</p>
 
-      <div class="sort-bar" style="display:flex;justify-content:flex-end;gap:1rem;margin-bottom:1rem;">
-        <label for="sort" style="align-self:center;color:var(--text-muted);">Ordenar:</label>
-        <select id="sort" class="sort-select" style="padding:0.6rem 0.8rem;border-radius:10px;background:var(--bg-card);border:1px solid var(--border-light);color:var(--text-primary);">
-          <option value="name-asc">A → Z</option>
-          <option value="name-desc">Z → A</option>
-          <option value="price-asc">Precio ↑</option>
-          <option value="price-desc">Precio ↓</option>
-        </select>
-      </div>
-
-      <div class="perfumes-grid">
-        <div class="perfume-card" data-name="Night Ember" data-price="89" data-brand="Noctis">
-          <div class="perfume-image"><div class="perfume-bottle">🔥</div></div>
-          <div class="perfume-info">
-            <div class="perfume-brand">Noctis</div>
-            <div class="perfume-name">Night Ember</div>
-            <div class="perfume-type">Eau de Parfum</div>
-            <p class="perfume-description">Acordes ahumados y resinosos que perduran.</p>
-            <div class="perfume-price">$89</div>
-            <button class="perfume-btn">Comprar</button>
+      <div class="category-grid-with-sidebar">
+        <aside class="brand-sidebar">
+          <h4>Filtrar por marca</h4>
+          <div class="brand-filter">
+            <label><input type="checkbox" data-brand="ALL" checked> Todas</label>
+            <label><input type="checkbox" data-brand="Noctis"> Noctis (4)</label>
+            <label><input type="checkbox" data-brand="Glacier"> Glacier (3)</label>
+            <label><input type="checkbox" data-brand="Hearth"> Hearth (3)</label>
           </div>
-        </div>
+        </aside>
 
-        <div class="perfume-card" data-name="Polar Mist" data-price="69" data-brand="Glacier">
-          <div class="perfume-image"><div class="perfume-bottle">❄️</div></div>
-          <div class="perfume-info">
-            <div class="perfume-brand">Glacier</div>
-            <div class="perfume-name">Polar Mist</div>
-            <div class="perfume-type">Eau de Toilette</div>
-            <p class="perfume-description">Frescor frío con toques aromáticos.</p>
-            <div class="perfume-price">$69</div>
-            <button class="perfume-btn">Comprar</button>
+        <div>
+          <div class="sort-bar" style="display:flex;justify-content:flex-end;gap:1rem;margin-bottom:1rem;">
+            <label for="sort" style="align-self:center;color:var(--text-muted);">Ordenar:</label>
+            <select id="sort" class="sort-select" style="padding:0.6rem 0.8rem;border-radius:10px;background:var(--bg-card);border:1px solid var(--border-light);color:var(--text-primary);">
+              <option value="name-asc">A → Z</option>
+              <option value="name-desc">Z → A</option>
+              <option value="price-asc">Precio ↑</option>
+              <option value="price-desc">Precio ↓</option>
+            </select>
           </div>
-        </div>
 
-        <div class="perfume-card" data-name="Coal & Smoke" data-price="99" data-brand="Hearth">
+          <div class="small-perfumes-grid">
+            <div class="perfume-card small-perfume-card invernales" data-name="Night Ember" data-price="89" data-brand="Noctis" data-desc="Aroma ahumado y cálido con notas de tabaco y ámbar, ideal para noches frías.">
+              <div class="perfume-image"><div class="perfume-bottle">🔥</div></div>
+              <div class="perfume-info"><div class="perfume-name">Night Ember</div><div class="perfume-price">$89</div></div>
+            </div>
+
+            <div class="perfume-card small-perfume-card invernales" data-name="Polar Mist" data-price="69" data-brand="Glacier" data-desc="Fresco y mentolado, con notas acuáticas y un fondo amaderado suave.">
+              <div class="perfume-image"><div class="perfume-bottle">❄️</div></div>
+              <div class="perfume-info"><div class="perfume-name">Polar Mist</div><div class="perfume-price">$69</div></div>
+            </div>
+
+            <div class="perfume-card small-perfume-card invernales" data-name="Coal & Smoke" data-price="99" data-brand="Hearth" data-desc="Intenso y profundo: carbón, resinas y madera quemada para carácter y presencia.">
+              <div class="perfume-image"><div class="perfume-bottle">🪵</div></div>
+              <div class="perfume-info"><div class="perfume-name">Coal & Smoke</div><div class="perfume-price">$99</div></div>
+            </div>
+
+            <div class="perfume-card small-perfume-card invernales" data-name="Glowing Hearth" data-price="95" data-brand="Hearth" data-desc="Notas de cuero y especias con un corazón cálido de resina, elegante y envolvente.">
+              <div class="perfume-image"><div class="perfume-bottle">🔥</div></div>
+              <div class="perfume-info"><div class="perfume-name">Glowing Hearth</div><div class="perfume-price">$95</div></div>
+            </div>
+
+            <div class="perfume-card small-perfume-card invernales" data-name="Frostline" data-price="72" data-brand="Glacier" data-desc="Aroma helado con cítricos fríos y un fondo mineral que recuerda a la brisa ártica.">
+              <div class="perfume-image"><div class="perfume-bottle">❄️</div></div>
+              <div class="perfume-info"><div class="perfume-name">Frostline</div><div class="perfume-price">$72</div></div>
+            </div>
+
+            <div class="perfume-card small-perfume-card invernales" data-name="Smoked Oak" data-price="82" data-brand="Noctis" data-desc="Robusto y amaderado: roble ahumado con matices de cuero y balsámicos.">
+              <div class="perfume-image"><div class="perfume-bottle">🪵</div></div>
+              <div class="perfume-info"><div class="perfume-name">Smoked Oak</div><div class="perfume-price">$82</div></div>
+            </div>
+
+            <div class="perfume-card small-perfume-card invernales" data-name="Glowing Hearth" data-price="95" data-brand="Hearth" data-desc="Notas de cuero y especias con un corazón cálido de resina, elegante y envolvente.">
+              <div class="perfume-image"><div class="perfume-bottle">🔥</div></div>
+              <div class="perfume-info"><div class="perfume-name">Glowing Hearth</div><div class="perfume-price">$95</div></div>
+            </div>
+
+            <div class="perfume-card small-perfume-card invernales" data-name="Frostline" data-price="72" data-brand="Glacier" data-desc="Aroma helado con cítricos fríos y un fondo mineral que recuerda a la brisa ártica.">
+              <div class="perfume-image"><div class="perfume-bottle">❄️</div></div>
+              <div class="perfume-info"><div class="perfume-name">Frostline</div><div class="perfume-price">$72</div></div>
+            </div>
+
+            <div class="perfume-card small-perfume-card invernales" data-name="Midnight Coal" data-price="86" data-brand="Noctis" data-desc="Oscuro y profundo, mezcla de carbón y notas ambarinas para presencia nocturna.">
+              <div class="perfume-image"><div class="perfume-bottle">🌑</div></div>
+              <div class="perfume-info"><div class="perfume-name">Midnight Coal</div><div class="perfume-price">$86</div></div>
+            </div>
+
+            <div class="perfume-card small-perfume-card invernales" data-name="Icebound" data-price="75" data-brand="Glacier" data-desc="Ligero y refrescante, con toques marinos y una base fría y cristalina.">
+              <div class="perfume-image"><div class="perfume-bottle">🧊</div></div>
+              <div class="perfume-info"><div class="perfume-name">Icebound</div><div class="perfume-price">$75</div></div>
+            </div>
+
+            <div class="perfume-card small-perfume-card invernales" data-name="Warm Resin" data-price="102" data-brand="Hearth" data-desc="Resinas cálidas y ámbar, lujo y durabilidad en cada estela.">
+              <div class="perfume-image"><div class="perfume-bottle">🟤</div></div>
+              <div class="perfume-info"><div class="perfume-name">Warm Resin</div><div class="perfume-price">$102</div></div>
+            </div>
+
+            <div class="perfume-card small-perfume-card invernales" data-name="Ember Ash" data-price="78" data-brand="Noctis" data-desc="Equilibrio entre humo y notas terrosas, elegante y masculino.">
+              <div class="perfume-image"><div class="perfume-bottle">⚫</div></div>
+              <div class="perfume-info"><div class="perfume-name">Ember Ash</div><div class="perfume-price">$78</div></div>
+            </div>
+
+        <div class="perfume-card small-perfume-card invernales" data-name="Coal & Smoke" data-price="99" data-brand="Hearth" data-desc="Profundo, con base ahumada y ambarina.">
           <div class="perfume-image"><div class="perfume-bottle">🪵</div></div>
-          <div class="perfume-info">
-            <div class="perfume-brand">Hearth</div>
-            <div class="perfume-name">Coal & Smoke</div>
-            <div class="perfume-type">Eau de Parfum</div>
-            <p class="perfume-description">Profundo, con base ahumada y ambarina.</p>
-            <div class="perfume-price">$99</div>
-            <button class="perfume-btn">Comprar</button>
-          </div>
+          <div class="perfume-info"><div class="perfume-name">Coal & Smoke</div><div class="perfume-price">$99</div></div>
         </div>
 
       </div>
