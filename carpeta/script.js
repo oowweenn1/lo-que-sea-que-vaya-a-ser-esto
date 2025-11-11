@@ -33,16 +33,25 @@ document.addEventListener('DOMContentLoaded', function() {
         hamburger.addEventListener('click', () => {
             hamburger.classList.toggle('active');
             mobileMenu.classList.toggle('active');
+            hamburger.setAttribute('aria-expanded', hamburger.classList.contains('active'));
         });
 
         mobileMenuLinks.forEach(link => {
             link.addEventListener('click', closeMobileMenu);
+        });
+        
+        // Cerrar menú al hacer click fuera
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.nav-container') && !e.target.closest('.mobile-menu')) {
+                closeMobileMenu();
+            }
         });
     }
 
     function closeMobileMenu() {
         hamburger?.classList.remove('active');
         mobileMenu?.classList.remove('active');
+        hamburger?.setAttribute('aria-expanded', 'false');
     }
 
     // ===== MODALES DE PERFUMES - FUNCIÓN OPTIMIZADA =====
@@ -92,9 +101,10 @@ document.addEventListener('DOMContentLoaded', function() {
         const closeModal = () => {
             modal.classList.remove('active');
             const scrollPosition = parseInt(body.style.top || '0') * -1;
-            body.style.overflow = 'auto';
-            body.style.position = 'static';
-            body.style.top = 'auto';
+            body.style.overflow = '';
+            body.style.position = '';
+            body.style.top = '';
+            body.style.width = '';
             window.scrollTo(0, scrollPosition);
         };
 

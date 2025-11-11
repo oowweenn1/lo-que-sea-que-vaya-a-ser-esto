@@ -1501,3 +1501,267 @@ body {
 .logo:hover .logo-icon {
     filter: drop-shadow(0 0 20px rgba(212, 175, 55, 1));
 }
+
+/* ===== RESPONSIVE HAMBURGER ===== */
+@media (max-width: 1024px) {
+    .nav-menu {
+        display: none;
+    }
+    
+    .hamburger {
+        display: flex;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-container {
+        padding: 0 1.5rem;
+    }
+    
+    .logo {
+        font-size: 1.2rem;
+        letter-spacing: 0.5px;
+    }
+    
+    .hamburger {
+        display: flex;
+    }
+    
+    .mobile-menu {
+        max-width: 100%;
+        padding: 5rem 1.5rem 2rem;
+    }
+    
+    .mobile-menu-list {
+        gap: 0.5rem;
+    }
+    
+    .mobile-menu-link {
+        font-size: 1.2rem;
+        padding: 0.8rem;
+    }
+    
+    .perfumes-hero {
+        padding: 5rem 0 2rem;
+    }
+    
+    .perfumes-hero h1 {
+        font-size: clamp(2rem, 5vw, 3rem);
+    }
+    
+    .perfumes-hero p {
+        font-size: 1rem;
+    }
+    
+    .container {
+        padding: 0 1.5rem;
+    }
+    
+    .section {
+        margin: 3rem 0;
+        padding: 2rem 1.5rem;
+        border-radius: 20px;
+    }
+    
+    .section-title {
+        font-size: clamp(1.8rem, 3vw, 2.2rem);
+    }
+    
+    .fragrance-categories-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+    }
+    
+    .fragrance-category-card {
+        padding: 2rem 1rem;
+    }
+    
+    .category-icon {
+        font-size: 3.5rem;
+    }
+    
+    .tips-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1.5rem;
+    }
+    
+    .tip-card {
+        padding: 1.5rem 1rem;
+    }
+    
+    .tip-icon {
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 640px) {
+    .header {
+        padding: 0.8rem 0;
+    }
+    
+    .nav-container {
+        padding: 0 1rem;
+    }
+    
+    .logo {
+        font-size: 1rem;
+        letter-spacing: 0;
+    }
+    
+    .hamburger {
+        gap: 4px;
+    }
+    
+    .hamburger-line {
+        width: 24px;
+        height: 2.5px;
+    }
+    
+    .mobile-menu {
+        max-width: 100%;
+        padding: 4.5rem 1rem 1.5rem;
+    }
+    
+    .mobile-menu-link {
+        font-size: 1rem;
+        padding: 0.7rem;
+    }
+    
+    .perfumes-hero {
+        padding: 4rem 0 1.5rem;
+    }
+    
+    .perfumes-hero h1 {
+        font-size: clamp(1.8rem, 4vw, 2.5rem);
+        margin-bottom: 1rem;
+    }
+    
+    .perfumes-hero p {
+        font-size: 0.95rem;
+        margin-bottom: 2rem;
+    }
+    
+    .container {
+        padding: 0 1rem;
+    }
+    
+    .section {
+        margin: 2rem 0;
+        padding: 1.5rem 1rem;
+        border-radius: 15px;
+    }
+    
+    .section-title {
+        font-size: clamp(1.5rem, 2.5vw, 1.8rem);
+        margin-bottom: 0.8rem;
+    }
+    
+    .section-subtitle {
+        font-size: 0.95rem;
+        margin-bottom: 2rem;
+    }
+    
+    .fragrance-categories-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .fragrance-category-card {
+        padding: 1.5rem 1rem;
+    }
+    
+    .category-icon {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+    }
+    
+    .fragrance-category-card h3 {
+        font-size: 1.5rem;
+        margin-bottom: 0.8rem;
+    }
+    
+    .fragrance-category-card p {
+        font-size: 0.9rem;
+    }
+    
+    .category-btn {
+        padding: 0.8rem 1.5rem;
+        font-size: 0.85rem;
+    }
+    
+    .tips-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .tip-card {
+        padding: 1.2rem 0.8rem;
+    }
+    
+    .tip-icon {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+    }
+    
+    .tip-card h3 {
+        font-size: 1.1rem;
+        margin-bottom: 0.7rem;
+    }
+    
+    .tip-card p {
+        font-size: 0.9rem;
+    }
+    
+    .footer {
+        padding: 2rem 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-container {
+        padding: 0 0.8rem;
+    }
+    
+    .logo {
+        font-size: 0.95rem;
+    }
+    
+    .hamburger-line {
+        width: 22px;
+    }
+    
+    .mobile-menu {
+        padding: 4rem 0.8rem 1rem;
+    }
+    
+    .perfumes-hero {
+        padding: 3rem 0 1rem;
+    }
+    
+    .perfumes-hero h1 {
+        font-size: clamp(1.5rem, 3vw, 2rem);
+    }
+    
+    .perfumes-hero p {
+        font-size: 0.9rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .container {
+        padding: 0 0.8rem;
+    }
+    
+    .section {
+        margin: 1.5rem 0;
+        padding: 1rem 0.8rem;
+        border-radius: 12px;
+    }
+    
+    .fragrance-categories-grid {
+        gap: 0.8rem;
+    }
+    
+    .fragrance-category-card {
+        padding: 1.2rem 0.8rem;
+    }
+}
