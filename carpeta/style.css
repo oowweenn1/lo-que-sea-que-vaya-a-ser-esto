@@ -862,7 +862,7 @@ body {
 /* Colores específicos por categoría */
 .veraniegas { background: var(--gradient-gold); }
 .otonales { background: var(--gradient-burgundy); }
-.invernales { background: var(--gradient-gray); }
+.invernales { background: var(--gradient-black); }
 .primaverales { background: var(--gradient-dark); }
 
 .category-icon {
@@ -1229,4 +1229,4 @@ body {
     justify-content: center;
     margin-bottom: 1rem;
         overflow: hidden;
-    }
+    }   
